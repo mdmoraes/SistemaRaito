@@ -8,7 +8,7 @@ uses
 
 type
   TfrmRelatorioRegistrosTabelaFixa = class(TForm)
-    QuickRep1: TQuickRep;
+    QRepTabelaFixa: TQuickRep;
     QRBand1: TQRBand;
     QRBand2: TQRBand;
     QRBand3: TQRBand;
@@ -29,6 +29,8 @@ type
     QRLabel6: TQRLabel;
     QRLabel7: TQRLabel;
     QRLabel8: TQRLabel;
+    QRSysData1: TQRSysData;
+    qrlabelCount: TQRLabel;
   private
     { Private declarations }
   public

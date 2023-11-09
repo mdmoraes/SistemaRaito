@@ -87,7 +87,7 @@ var
 
 implementation
 
-uses UDMRaito, URelatorioPlanilhaFixa, UPesquisarClientes;
+uses UDMRaito, URelatorioPlanilhaFixa, UPesquisarClientes, URelatorioDeRegistrosTabelaFixa;
 
 {$R *.dfm}
 
@@ -186,10 +186,14 @@ end;
 procedure TfrmTabelaFixaImportada.btnImprimirClick(Sender: TObject);
 begin
    try
-      Application.CreateForm(TfrmRelatorioPlanilhaFixa,frmRelatorioPlanilhaFixa);
-      frmRelatorioPlanilhaFixa.qckrpPlanilhaFixa.Preview;
+      Application.CreateForm(TfrmRelatorioRegistrosTabelaFixa, frmRelatorioRegistrosTabelaFixa);
+
+      DMRaito.FDTableTabelaFixa.Close;
+      DMRaito.FDTableTabelaFixa.Open();
+      frmRelatorioRegistrosTabelaFixa.qrlabelCount.Caption:= 'Total de Registros: ' + IntToStr(DMRaito.FDTableTabelaFixa.RecordCount);
+      frmRelatorioRegistrosTabelaFixa.QRepTabelaFixa.Preview;
       finally
-      frmRelatorioPlanilhaFixa.Free;
+      frmRelatorioRegistrosTabelaFixa.Free;
       end;
 end;
 

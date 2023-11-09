@@ -229,7 +229,7 @@ object DMRaito: TDMRaito
     Top = 200
   end
   object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
-    VendorLib = 'D:\PROJETOS DELPHI\Sistema Raito D11\libmysql.dll'
+    VendorLib = 'D:\PROJETOS DELPHI\Projeto Raito D11\libmysql.dll'
     Left = 520
     Top = 104
   end
@@ -1010,6 +1010,8 @@ object DMRaito: TDMRaito
     Active = True
     Connection = FDConnection1
     SchemaAdapter = FDSchemaAdapter
+    FetchOptions.AssignedValues = [evRecordCountMode]
+    FetchOptions.RecordCountMode = cmTotal
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'dbratio.tabelafixa'
     Left = 504

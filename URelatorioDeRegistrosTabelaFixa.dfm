@@ -12,7 +12,7 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
   Font.Style = []
   Scaled = False
   TextHeight = 15
-  object QuickRep1: TQuickRep
+  object QRepTabelaFixa: TQuickRep
     Left = 16
     Top = 8
     Width = 794
@@ -80,6 +80,7 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
       Top = 38
       Width = 718
       Height = 91
+      Frame.DrawBottom = True
       AlignToBottom = False
       TransparentBand = False
       ForceNewColumn = False
@@ -7760,12 +7761,71 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
           0000}
         Stretch = True
       end
+      object QRSysData1: TQRSysData
+        Left = 628
+        Top = 3
+        Width = 65
+        Height = 17
+        Size.Values = (
+          44.979166666666670000
+          1661.583333333333000000
+          7.937500000000000000
+          171.979166666666700000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taRightJustify
+        AlignToBand = False
+        Color = clWhite
+        Data = qrsDate
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsItalic]
+        ParentFont = False
+        Text = ''
+        Transparent = False
+        ExportAs = exptText
+        VerticalAlignment = tlTop
+        FontSize = 10
+      end
+      object qrlabelCount: TQRLabel
+        Left = 583
+        Top = 40
+        Width = 81
+        Height = 17
+        Size.Values = (
+          44.979166666666670000
+          1542.520833333333000000
+          105.833333333333300000
+          214.312500000000000000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taCenter
+        AlignToBand = False
+        Caption = 'qrlabelCount'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsItalic]
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        VerticalAlignment = tlTop
+        FontSize = 10
+      end
     end
     object QRBand2: TQRBand
       Left = 38
       Top = 129
       Width = 718
       Height = 40
+      Frame.DrawBottom = True
       AlignToBottom = False
       TransparentBand = False
       ForceNewColumn = False
@@ -7864,13 +7924,13 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
         FontSize = 8
       end
       object QRLabel4: TQRLabel
-        Left = 441
+        Left = 437
         Top = 20
         Width = 24
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1166.812500000000000000
+          1156.229166666667000000
           52.916666666666670000
           63.500000000000000000)
         XLColumn = 0
@@ -7893,14 +7953,14 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
         FontSize = 8
       end
       object QRLabel5: TQRLabel
-        Left = 490
-        Top = 17
+        Left = 488
+        Top = 20
         Width = 39
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1296.458333333333000000
-          44.979166666666670000
+          1291.166666666667000000
+          52.916666666666670000
           103.187500000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
@@ -7922,14 +7982,14 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
         FontSize = 8
       end
       object QRLabel6: TQRLabel
-        Left = 547
-        Top = 17
+        Left = 545
+        Top = 20
         Width = 41
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1447.270833333333000000
-          44.979166666666670000
+          1441.979166666667000000
+          52.916666666666670000
           108.479166666666700000)
         XLColumn = 0
         XLNumFormat = nfGeneral
@@ -7951,14 +8011,14 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
         FontSize = 8
       end
       object QRLabel7: TQRLabel
-        Left = 602
-        Top = 17
+        Left = 600
+        Top = 20
         Width = 41
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1592.791666666667000000
-          44.979166666666670000
+          1587.500000000000000000
+          52.916666666666670000
           108.479166666666700000)
         XLColumn = 0
         XLNumFormat = nfGeneral
@@ -7980,21 +8040,21 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
         FontSize = 8
       end
       object QRLabel8: TQRLabel
-        Left = 656
-        Top = 17
-        Width = 41
+        Left = 654
+        Top = 20
+        Width = 35
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1735.666666666667000000
-          44.979166666666670000
-          108.479166666666700000)
+          1730.375000000000000000
+          52.916666666666670000
+          92.604166666666670000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
         Alignment = taLeftJustify
         AlignToBand = False
-        Caption = 'ICMS12'
+        Caption = 'ICMS7'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
