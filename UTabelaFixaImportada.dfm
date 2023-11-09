@@ -633,6 +633,14 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       Height = 15
       Caption = 'Data da Atualiza'#231#227'o:'
     end
+    object btnLimparLista: TSpeedButton
+      Left = 200
+      Top = 448
+      Width = 121
+      Height = 22
+      Caption = 'Limpar Lista'
+      OnClick = btnLimparListaClick
+    end
     object gridItensCopiados: TJvDBGrid
       Left = 16
       Top = 96

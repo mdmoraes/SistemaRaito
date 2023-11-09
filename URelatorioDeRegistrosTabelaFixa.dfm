@@ -7762,15 +7762,15 @@ object frmRelatorioRegistrosTabelaFixa: TfrmRelatorioRegistrosTabelaFixa
         Stretch = True
       end
       object QRSysData1: TQRSysData
-        Left = 628
+        Left = 657
         Top = 3
-        Width = 65
+        Width = 36
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1661.583333333333000000
+          1738.312500000000000000
           7.937500000000000000
-          171.979166666666700000)
+          95.250000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False

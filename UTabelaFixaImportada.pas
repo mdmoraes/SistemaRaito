@@ -1,7 +1,5 @@
 unit UTabelaFixaImportada;
-
 interface
-
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
@@ -12,7 +10,6 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   JvComponentBase, JvBalloonHint, Vcl.Buttons, Vcl.DBCtrls, Vcl.Menus,
   JvMemoryDataset;
-
 type
   TfrmTabelaFixaImportada = class(TForm)
     Panel1: TPanel;
@@ -61,6 +58,7 @@ type
     edCliente: TEdit;
     btnBuscarCliente: TSpeedButton;
     Label8: TLabel;
+    btnLimparLista: TSpeedButton;
     procedure btnFecharClick(Sender: TObject);
     procedure rbCodigoClick(Sender: TObject);
     procedure rbDescricaoClick(Sender: TObject);
@@ -76,19 +74,18 @@ type
     procedure btnCopiarItensClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnBuscarClienteClick(Sender: TObject);
+    procedure btnLimparListaClick(Sender: TObject);
+
+
   private
     { Private declarations }
   public
     { Public declarations }
   end;
-
 var
   frmTabelaFixaImportada: TfrmTabelaFixaImportada;
-
 implementation
-
-uses UDMRaito, URelatorioPlanilhaFixa, UPesquisarClientes, URelatorioDeRegistrosTabelaFixa;
-
+uses UDMRaito, URelatorioPlanilhaFixa, UPesquisarClientes, URelatorioDeRegistrosTabelaFixa, Rotina;
 {$R *.dfm}
 
 procedure TfrmTabelaFixaImportada.btnBuscarClienteClick(Sender: TObject);
@@ -118,9 +115,7 @@ begin
         DMRaito.FDTableTabelaFixa.FieldByName('icms18').Value := FDQueryFiltro.Fields[7].Value;
         DMRaito.FDTableTabelaFixa.FieldByName('icms12').Value := FDQueryFiltro.Fields[8].Value;
         DMRaito.FDTableTabelaFixa.FieldByName('icms7').Value := FDQueryFiltro.Fields[9].Value;
-
         FDQueryFiltro.Next;
-
 
       end;
     end;
@@ -169,25 +164,20 @@ FDQueryFiltro.SQL.Add('SELECT * FROM dbratio.tbimportacao where codigo between :
 FDQueryFiltro.ParamByName('CODIGO1').AsString := Edit1.Text;
 FDQueryFiltro.ParamByName('CODIGO2').AsString := Edit2.Text;
 FDQueryFiltro.Open;
-
 lblRecordCount.Caption := 'Total de Registros: ' + IntToStr(FDQueryFiltro.RecordCount);
 end;
-
 procedure TfrmTabelaFixaImportada.btnFiltroPorDescricaoClick(Sender: TObject);
 begin
 FDQueryFiltro.SQL.Clear;
 FDQueryFiltro.SQL.Add('SELECT * FROM dbratio.tbimportacao where descricao like :DESCRICAO');
 FDQueryFiltro.ParamByName('DESCRICAO').AsString := '%'+Edit3.Text+'%';
 FDQueryFiltro.Open;
-
 lblRecordCount.Caption := 'Total de Registros: ' + IntToStr(FDQueryFiltro.RecordCount);
 end;
-
 procedure TfrmTabelaFixaImportada.btnImprimirClick(Sender: TObject);
 begin
    try
       Application.CreateForm(TfrmRelatorioRegistrosTabelaFixa, frmRelatorioRegistrosTabelaFixa);
-
       DMRaito.FDTableTabelaFixa.Close;
       DMRaito.FDTableTabelaFixa.Open();
       frmRelatorioRegistrosTabelaFixa.qrlabelCount.Caption:= 'Total de Registros: ' + IntToStr(DMRaito.FDTableTabelaFixa.RecordCount);
@@ -201,12 +191,25 @@ procedure TfrmTabelaFixaImportada.btnlimparFiltro1Click(Sender: TObject);
 begin
   Edit1.Clear;
   Edit2.Clear;
-
   FDQueryFiltro.Close;
   FDQueryFiltro.SQL.Clear;
   FDQueryFiltro.SQL.Add('SELECT * FROM dbratio.tbimportacao');
   FDQueryFiltro.Open;
   lblRecordCount.Caption := 'Total de Registros: ' + IntToStr(FDQueryFiltro.RecordCount);
+end;
+
+
+
+procedure TfrmTabelaFixaImportada.btnLimparListaClick(Sender: TObject);
+begin
+ //esvazia a tabela temporária TABELAFIXA
+  if MessageDlg('Confirma limpeza da lista de pesquisa de itens ?',mtConfirmation, [mbYes, mbNo], 0)= mrYes then
+  begin
+  //DeleteAll(DMRaito.FDTableTabelaFixa);
+  While not DMRaito.FDTableTabelaFixa.isEmpty do
+    DMRaito.FDTableTabelaFixa.Delete;
+
+  end;
 end;
 
 procedure TfrmTabelaFixaImportada.btnMontarListaClick(Sender: TObject);
@@ -234,5 +237,6 @@ begin
     FDQueryFiltro.IndexName:= 'idxCodigo';
     edPesquisar.SetFocus;
 end;
+
 
 end.
