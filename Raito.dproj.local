@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/11/08 14:48:18.000.661,=D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\Unit1.pas</Transaction>
+    <Transaction>2023/11/08 14:49:25.000.421,D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\Unit1.dfm=D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\URelatorioDeClientes.dfm</Transaction>
+    <Transaction>2023/11/08 14:49:25.000.421,D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\Unit1.pas=D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\URelatorioDeClientes.pas</Transaction>
+    <Transaction>2023/11/09 13:54:37.673,=D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\Unit1.pas</Transaction>
+    <Transaction>2023/11/09 13:59:08.967,D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\URelatorioDeRegistrosTabelaFixa.pas=D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\Unit1.pas</Transaction>
+    <Transaction>2023/11/09 13:59:08.967,D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\URelatorioDeRegistrosTabelaFixa.dfm=D:\PROJETOS DELPHI\Projeto Raito D11\ProjetoRaitoD11\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
