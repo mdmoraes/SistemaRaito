@@ -159,7 +159,6 @@ type
     FdTablePedidostipopedido: TStringField;
     FdTablePedidosidcliente: TIntegerField;
     FdTablePedidoscadastroclientes_idcliente: TIntegerField;
-    FdTableItensicms: TSingleField;
     FdTableItensliq1: TFloatField;
     FdTableTransportadoraTransportadoraId: TFDAutoIncField;
     FdTableTransportadoraNomeTransportadora: TStringField;
@@ -189,6 +188,7 @@ type
     FDTableTabelaFixaicms12: TFloatField;
     FDTableTabelaFixaicms7: TFloatField;
     dsTabelaFixa: TDataSource;
+    FdTableItensicms: TStringField;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);

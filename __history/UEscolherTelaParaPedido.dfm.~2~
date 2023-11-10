@@ -1,0 +1,39 @@
+object frmEscolherTelaParaPedidos: TfrmEscolherTelaParaPedidos
+  Left = 0
+  Top = 0
+  Caption = 'Escolher tela de Produtos para Emiss'#227'o do Pedido'
+  ClientHeight = 144
+  ClientWidth = 418
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object btnFechar: TButton
+    Left = 168
+    Top = 105
+    Width = 75
+    Height = 25
+    Caption = 'Fechar'
+    TabOrder = 0
+    OnClick = btnFecharClick
+  end
+  object btnListaProdutosNormal: TButton
+    Left = 28
+    Top = 24
+    Width = 145
+    Height = 25
+    Caption = 'Lista de Produtos Normal'
+    TabOrder = 1
+  end
+  object btnListaProdutosFabrica: TButton
+    Left = 232
+    Top = 24
+    Width = 153
+    Height = 25
+    Caption = 'Lista de Produtos F'#193'BRICA'
+    TabOrder = 2
+  end
+end

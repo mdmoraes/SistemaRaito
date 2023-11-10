@@ -25,7 +25,8 @@ uses
   UBuscarProdutoParaEmissaoDePedido in 'UBuscarProdutoParaEmissaoDePedido.pas' {frmBuscarProdutoParaPedido},
   URelatorioPlanilhaFixa in 'URelatorioPlanilhaFixa.pas' {frmRelatorioPlanilhaFixa},
   URelatorioDeClientes in 'URelatorioDeClientes.pas' {frmRelatorioDeClientes},
-  URelatorioDeRegistrosTabelaFixa in 'URelatorioDeRegistrosTabelaFixa.pas' {frmRelatorioRegistrosTabelaFixa};
+  URelatorioDeRegistrosTabelaFixa in 'URelatorioDeRegistrosTabelaFixa.pas' {frmRelatorioRegistrosTabelaFixa},
+  UEscolherTelaParaPedido in 'UEscolherTelaParaPedido.pas' {frmEscolherTelaParaPedidos};
 
 {$R *.res}
 begin
@@ -33,7 +34,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMRaito, DMRaito);
-  Application.CreateForm(TfrmRelatorioDeClientes, frmRelatorioDeClientes);
-  Application.CreateForm(TfrmRelatorioRegistrosTabelaFixa, frmRelatorioRegistrosTabelaFixa);
   Application.Run;
 end.

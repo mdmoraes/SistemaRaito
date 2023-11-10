@@ -142,7 +142,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
     end
   end
   object ButtonGradientFechar: TButtonGradient
-    Left = 213
+    Left = 221
     Top = 381
     Caption = 'Fechar'
     Default = True

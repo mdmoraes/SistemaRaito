@@ -17,6 +17,10 @@ type
     rbCodigo: TRadioButton;
     rbDescricao: TRadioButton;
     dsConsultaProduto: TDataSource;
+    GroupBox1: TGroupBox;
+    rb18: TRadioButton;
+    rb12: TRadioButton;
+    rb7: TRadioButton;
     procedure FormShow(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure rbCodigoClick(Sender: TObject);
@@ -75,16 +79,26 @@ end;
 
 procedure TFrmPesquisarProdutos.CopiarProdutos;
 begin
-  //DMRaito.FdTableItens.Open;
+  DMRaito.FdTableItens.Edit;
+
   DMRaito.FdTableItens.Append;
   frmPedido.dbgrdItens.Columns.Items[2].Field.Text := dbgrd1.Columns.Items[0].Field.Text;
   frmPedido.dbgrdItens.Columns.Items[3].Field.Text := dbgrd1.Columns.Items[1].Field.Text;
   frmPedido.dbgrdItens.Columns.Items[4].Field.Text := dbgrd1.Columns.Items[2].Field.Text;
   frmPedido.dbgrdItens.Columns.Items[5].Field.Text := dbgrd1.Columns.Items[3].Field.Text;
   frmPedido.dbgrdItens.Columns.Items[7].Field.Text := dbgrd1.Columns.Items[4].Field.Text;
-//  frmPedido.dbgrdItens.Columns.Items[10].Field.Text := dbgrd1.Columns.Items[5].Field.Text;
+
+ //testar a escolha do ICMS
+  if rb18.Checked = true then
+  frmPedido.dbgrdItens.Columns.Items[12].Field.Text := '18';
+
+  if rb12.Checked = true then
+  frmPedido.dbgrdItens.Columns.Items[12].Field.Text := '12';
+
+  if rb7.Checked = true then
+  frmPedido.dbgrdItens.Columns.Items[12].Field.Text := '7';
+
   frmPedido.dbgrdItens.SelectedIndex := 6;
-  //DBGrid1.SelectedIndex := 2;
   btnFechar.Click;
 end;
 

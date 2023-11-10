@@ -9,7 +9,7 @@ uses
 
 type
   TfrmBuscarProdutoParaPedido = class(TForm)
-    JvDBGrid1: TJvDBGrid;
+    gridItens: TJvDBGrid;
     GroupBox1: TGroupBox;
     rb18: TRadioButton;
     rb12: TRadioButton;
@@ -21,7 +21,7 @@ type
     edPesquisar: TEdit;
     btnFechar: TButton;
     procedure btnFecharClick(Sender: TObject);
-    procedure JvDBGrid1DblClick(Sender: TObject);
+    procedure gridItensDblClick(Sender: TObject);
     procedure rbCodigoClick(Sender: TObject);
     procedure rbDescricaoClick(Sender: TObject);
     procedure edPesquisarChange(Sender: TObject);
@@ -39,7 +39,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDMRaito;
+uses UDMRaito, UPedido;
 
 procedure TfrmBuscarProdutoParaPedido.btnFecharClick(Sender: TObject);
 begin
@@ -51,10 +51,39 @@ begin
 DMRaito.FdTbImportacao.FindNearest([edPesquisar.Text])
 end;
 
-procedure TfrmBuscarProdutoParaPedido.JvDBGrid1DblClick(Sender: TObject);
+procedure TfrmBuscarProdutoParaPedido.gridItensDblClick(Sender: TObject);
 begin
-if rb18.Checked then
-ShowMessage('ICMS18');
+  DMRaito.FdTableItens.Edit;
+
+  DMRaito.FdTableItens.Append;
+  frmPedido.dbgrdItens.Columns.Items[2].Field.Text := gridItens.Columns.Items[0].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[3].Field.Text := gridItens.Columns.Items[1].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[4].Field.Text := gridItens.Columns.Items[2].Field.Text;
+ // frmPedido.dbgrdItens.Columns.Items[5].Field.Text := gridItens.Columns.Items[3].Field.Text;
+//  frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[4].Field.Text;
+
+ //testar a escolha do ICMS
+  if rb18.Checked = true then
+  begin
+  frmPedido.dbgrdItens.Columns.Items[12].Field.Text := '18';
+  frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[11].Field.Text;
+  end;
+
+  if rb12.Checked = true then
+  begin
+  frmPedido.dbgrdItens.Columns.Items[12].Field.Text := '12';
+  frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[12].Field.Text;
+  end;
+
+  if rb7.Checked = true then
+  begin
+  frmPedido.dbgrdItens.Columns.Items[12].Field.Text := '7';
+  frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[13].Field.Text;
+  end;
+
+  frmPedido.dbgrdItens.SelectedIndex := 6;
+  btnFechar.Click;
+
 
 end;
 

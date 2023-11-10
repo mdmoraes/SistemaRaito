@@ -7881,38 +7881,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlTop
         FontSize = 6
       end
-      object qrdbtxtGRUPO: TQRDBText
-        Left = 366
-        Top = 2
-        Width = 30
-        Height = 11
-        Size.Values = (
-          29.104166666666670000
-          968.375000000000000000
-          5.291666666666667000
-          79.375000000000000000)
-        XLColumn = 0
-        XLNumFormat = nfGeneral
-        ActiveInPreview = False
-        Alignment = taLeftJustify
-        AlignToBand = False
-        Color = clWhite
-        DataSet = queryRelPedido
-        DataField = 'GRUPO'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -8
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Transparent = False
-        ExportAs = exptText
-        WrapStyle = BreakOnSpaces
-        FullJustify = False
-        MaxBreakChars = 0
-        VerticalAlignment = tlTop
-        FontSize = 6
-      end
       object qrdbtxtVALORUNIT: TQRDBText
         Left = 466
         Top = 0
@@ -7978,15 +7946,15 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 6
       end
       object qrdbtxtTOTAL: TQRDBText
-        Left = 658
+        Left = 664
         Top = 1
-        Width = 49
-        Height = 11
+        Width = 56
+        Height = 15
         Size.Values = (
-          29.104166666666670000
-          1740.958333333333000000
+          39.687500000000000000
+          1756.833333333333000000
           2.645833333333333000
-          129.645833333333300000)
+          148.166666666666700000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -7997,7 +7965,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         DataField = 'TOTALITENS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -8
+        Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
         Mask = '###,###,##0.00'
@@ -8008,7 +7976,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FullJustify = False
         MaxBreakChars = 0
         VerticalAlignment = tlTop
-        FontSize = 6
+        FontSize = 7
       end
       object QRDBText1: TQRDBText
         Left = 499
@@ -8046,13 +8014,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object QRDBText2: TQRDBText
         Left = 633
         Top = 1
-        Width = 25
+        Width = 21
         Height = 15
         Size.Values = (
           39.687500000000000000
           1674.812500000000000000
           2.645833333333333000
-          66.145833333333330000)
+          55.562500000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -8063,7 +8031,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         DataField = 'ICMS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -11
+        Font.Height = -8
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
@@ -8073,7 +8041,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FullJustify = False
         MaxBreakChars = 0
         VerticalAlignment = tlTop
-        FontSize = 8
+        FontSize = 6
       end
     end
     object QRBand3: TQRBand
@@ -9230,35 +9198,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlCenter
         FontSize = 10
       end
-      object qrlbl22: TQRLabel
-        Left = 364
-        Top = 222
-        Width = 40
-        Height = 17
-        Size.Values = (
-          44.979166666666670000
-          963.083333333333300000
-          587.375000000000000000
-          105.833333333333300000)
-        XLColumn = 0
-        XLNumFormat = nfGeneral
-        ActiveInPreview = False
-        Alignment = taLeftJustify
-        AlignToBand = False
-        Caption = 'Grupo'
-        Color = clWhite
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = False
-        ExportAs = exptText
-        WrapStyle = BreakOnSpaces
-        VerticalAlignment = tlCenter
-        FontSize = 10
-      end
       object qrlbl23: TQRLabel
         Left = 422
         Top = 222
@@ -9669,15 +9608,15 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 9
       end
       object qrdbtotalbruto: TQRDBText
-        Left = 639
+        Left = 635
         Top = 6
-        Width = 85
+        Width = 89
         Height = 18
         Size.Values = (
           47.625000000000000000
-          1690.687500000000000000
+          1680.104166666667000000
           15.875000000000000000
-          224.895833333333300000)
+          235.479166666666700000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -9690,7 +9629,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = []
+        Font.Style = [fsBold]
         Mask = '###,###,##0.00'
         ParentFont = False
         Transparent = False
@@ -9731,6 +9670,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
   end
   object queryRelPedido: TFDQuery
+    Active = True
     MasterFields = 'PedidoId'
     DetailFields = 'NUM_PEDIDO'
     Connection = DMRaito.FDConnection1
@@ -9899,13 +9839,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ProviderFlags = []
       ReadOnly = True
     end
-    object queryRelPedidoICMS: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'ICMS'
-      Origin = 'icms'
-      ProviderFlags = []
-      ReadOnly = True
-    end
     object queryRelPedidobairro: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'bairro'
@@ -9999,6 +9932,14 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ProviderFlags = []
       ReadOnly = True
       currency = True
+    end
+    object queryRelPedidoICMS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ICMS'
+      Origin = 'icms'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 2
     end
   end
 end

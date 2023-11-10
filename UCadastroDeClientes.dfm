@@ -308,8 +308,8 @@ object frmCadastroClientes: TfrmCadastroClientes
       FocusControl = dbedtbairro
     end
     object lbl5: TLabel
-      Left = 544
-      Top = 16
+      Left = 491
+      Top = 8
       Width = 48
       Height = 17
       Caption = 'idcliente'
@@ -406,6 +406,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       Height = 25
       DataField = 'datacadastro'
       DataSource = DMRaito.dsCliente
+      ReadOnly = True
       TabOrder = 2
     end
     object dbedtendereco: TDBEdit
@@ -427,8 +428,8 @@ object frmCadastroClientes: TfrmCadastroClientes
       TabOrder = 4
     end
     object dbedtidcliente: TDBEdit
-      Left = 544
-      Top = 32
+      Left = 491
+      Top = 24
       Width = 48
       Height = 25
       DataField = 'idcliente'

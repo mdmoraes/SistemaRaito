@@ -208,7 +208,6 @@ begin
   //DeleteAll(DMRaito.FDTableTabelaFixa);
   While not DMRaito.FDTableTabelaFixa.isEmpty do
     DMRaito.FDTableTabelaFixa.Delete;
-
   end;
 end;
 

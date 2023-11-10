@@ -50,13 +50,11 @@ type
     qrdbtxtCODIGO: TQRDBText;
     qrdbtxtPRODUTO: TQRDBText;
     qrdbtxtQTD: TQRDBText;
-    qrdbtxtGRUPO: TQRDBText;
     qrdbtxtVALORUNIT: TQRDBText;
     qrdbtxtPERCENTUAL1: TQRDBText;
     qrdbtxtTOTAL: TQRDBText;
     qrlbl20: TQRLabel;
     qrlbl21: TQRLabel;
-    qrlbl22: TQRLabel;
     qrlbl23: TQRLabel;
     qrlbl24: TQRLabel;
     qrlbl25: TQRLabel;
@@ -95,7 +93,6 @@ type
     queryRelPedidoP1: TFloatField;
     queryRelPedidoP2: TFloatField;
     queryRelPedidoP3: TFloatField;
-    queryRelPedidoICMS: TSingleField;
     queryRelPedidobairro: TStringField;
     queryRelPedidoendereco: TStringField;
     queryRelPedidocidade: TStringField;
@@ -108,6 +105,7 @@ type
     queryRelPedidocnpj: TStringField;
     queryRelPedidoLIQ1: TFloatField;
     queryRelPedidoTOTALITENS: TFloatField;
+    queryRelPedidoICMS: TStringField;
   private
     { Private declarations }
   public

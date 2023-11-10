@@ -184,6 +184,10 @@
             <Form>frmRelatorioRegistrosTabelaFixa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UEscolherTelaParaPedido.pas">
+            <Form>frmEscolherTelaParaPedidos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="Raito.todo"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

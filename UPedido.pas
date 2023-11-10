@@ -89,7 +89,7 @@ var
 implementation
 
 uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos, UPesquisaPedido,
- URelatorioPedido, UPesquisarClientes, UBuscarProdutoParaEmissaoDePedido;
+ URelatorioPedido, UPesquisarClientes, UBuscarProdutoParaEmissaoDePedido, UEscolherTelaParaPedido;
 
 
 {$R *.dfm}
@@ -144,19 +144,19 @@ begin
     ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
 
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-    DMRaito.FdTablePedidos.EmptyDataSet;
-    DMRaito.FdTableItens.EmptyDataSet;
+//    DMRaito.FdTablePedidos.EmptyDataSet;
+//    DMRaito.FdTableItens.EmptyDataSet;
 
     //VAI PARA O ÚLTIMO REGISTRO
-    DMRaito.FDTablePedidos.Active:= False;
-    DMRaito.FDTablePedidos.Active:= True;
+//    DMRaito.FDTablePedidos.Active:= False;
+//    DMRaito.FDTablePedidos.Active:= True;
+//
+//    DMRaito.FdTableItens.Active:= False;
+//    DMRaito.FdTableItens.Active:= True;
 
-    DMRaito.FdTableItens.Active:= False;
-    DMRaito.FdTableItens.Active:= True;
-
-    DMRaito.FdTablePedidos.IndexName:= 'IdxPedidoId';
-    DMRaito.FdTablePedidos.First;
-    DMRaito.FdTablePedidos.Last;
+//    DMRaito.FdTablePedidos.IndexName:= 'IdxPedidoId';
+//    DMRaito.FdTablePedidos.First;
+//    DMRaito.FdTablePedidos.Last;
 
 
 
@@ -286,10 +286,10 @@ end;
 procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
 begin
  try
- application.CreateForm(TfrmBuscarProdutoParaPedido, frmBuscarProdutoParaPedido);
- frmBuscarProdutoParaPedido.ShowModal;
+ application.CreateForm(TfrmEscolherTelaParaPedidos, frmEscolherTelaParaPedidos);
+ frmEscolherTelaParaPedidos.ShowModal;
  finally
- frmBuscarProdutoParaPedido.Free;
+ frmEscolherTelaParaPedidos.Free;
  end;
 end;
 
