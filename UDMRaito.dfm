@@ -717,6 +717,7 @@ object DMRaito: TDMRaito
   object FdTablePedidos: TFDTable
     Active = True
     AutoCalcFields = False
+    OnCalcFields = FdTablePedidosCalcFields
     CachedUpdates = True
     IndexFieldNames = 'PedidoId'
     Connection = FDConnection1
@@ -765,11 +766,15 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'comissao'
       Origin = 'comissao'
+      DisplayFormat = '###.00"%"'
+      EditFormat = '###.00"%"'
     end
     object FdTablePedidoscomissaovalor: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'comissaovalor'
       Origin = 'comissaovalor'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
     end
     object FdTablePedidosobs: TStringField
       AutoGenerateValue = arDefault
@@ -805,6 +810,11 @@ object DMRaito: TDMRaito
       FieldName = 'cadastroclientes_idcliente'
       Origin = 'cadastroclientes_idcliente'
       Required = True
+    end
+    object FdTablePedidosvrcomissao: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'vrcomissao'
+      Calculated = True
     end
   end
   object FdTableItens: TFDTable

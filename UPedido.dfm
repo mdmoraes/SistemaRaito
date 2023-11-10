@@ -542,8 +542,9 @@ object frmPedido: TfrmPedido
       Top = 173
       Width = 97
       Height = 23
-      DataField = 'comissaovalor'
+      DataField = 'vrcomissao'
       DataSource = DMRaito.dsPedidos
+      ReadOnly = True
       TabOrder = 5
     end
     object lokupcliente1: TDBLookupComboBox

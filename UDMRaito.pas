@@ -189,10 +189,12 @@ type
     FDTableTabelaFixaicms7: TFloatField;
     dsTabelaFixa: TDataSource;
     FdTableItensicms: TStringField;
+    FdTablePedidosvrcomissao: TFloatField;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
     procedure FDTableClienteBeforePost(DataSet: TDataSet);
+    procedure FdTablePedidosCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -260,6 +262,12 @@ DMRaito.FdTableItensliq1.Value:=
 ////
 DMRaito.FdTableItensTotalItens.Value :=
 ((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensqtd.Value - DMRaito.FdTableItensliq1.Value));
+end;
+
+procedure TDMRaito.FdTablePedidosCalcFields(DataSet: TDataSet);
+begin
+   DMRaito.FdTablePedidosvrcomissao.Value:=
+   (DMRaito.FdTablePedidoscomissao.Value * DMRaito.FdTablePedidostotalbruto.Value) /100;
 end;
 
 end.
