@@ -9435,14 +9435,14 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 10
       end
       object qrlblObs: TQRLabel
-        Left = 8
-        Top = 3
+        Left = 6
+        Top = 40
         Width = 73
         Height = 16
         Size.Values = (
           42.333333333333330000
-          21.166666666666670000
-          7.937500000000000000
+          15.875000000000000000
+          105.833333333333300000
           193.145833333333300000)
         XLColumn = 0
         XLNumFormat = nfGeneral
@@ -9463,43 +9463,14 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlTop
         FontSize = 9
       end
-      object qrlblLembrete: TQRLabel
-        Left = 224
-        Top = 3
-        Width = 59
-        Height = 16
-        Size.Values = (
-          42.333333333333330000
-          592.666666666666700000
-          7.937500000000000000
-          156.104166666666700000)
-        XLColumn = 0
-        XLNumFormat = nfGeneral
-        ActiveInPreview = False
-        Alignment = taLeftJustify
-        AlignToBand = False
-        Caption = 'Lembrete:'
-        Color = clWhite
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = False
-        ExportAs = exptText
-        WrapStyle = BreakOnSpaces
-        VerticalAlignment = tlTop
-        FontSize = 9
-      end
       object qrlblTipoDePedido: TQRLabel
-        Left = 363
+        Left = 304
         Top = 3
         Width = 87
         Height = 16
         Size.Values = (
           42.333333333333330000
-          960.437500000000000000
+          804.333333333333300000
           7.937500000000000000
           230.187500000000000000)
         XLColumn = 0
@@ -9522,13 +9493,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 9
       end
       object qrdbTIPOPEDIDO: TQRDBText
-        Left = 372
+        Left = 313
         Top = 25
         Width = 64
         Height = 19
         Size.Values = (
           50.270833333333330000
-          984.250000000000000000
+          828.145833333333300000
           66.145833333333330000
           169.333333333333300000)
         XLColumn = 0
@@ -9580,33 +9551,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlCenter
         FontSize = 9
       end
-      object qrdbLEMBRETE: TQRDBText
-        Left = 224
-        Top = 25
-        Width = 65
-        Height = 65
-        Size.Values = (
-          171.979166666666700000
-          592.666666666666700000
-          66.145833333333330000
-          171.979166666666700000)
-        XLColumn = 0
-        XLNumFormat = nfGeneral
-        ActiveInPreview = False
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoStretch = True
-        Color = clWhite
-        DataSet = queryRelPedido
-        DataField = 'LEMBRETE'
-        Transparent = False
-        ExportAs = exptText
-        WrapStyle = BreakAnywhere
-        FullJustify = False
-        MaxBreakChars = 0
-        VerticalAlignment = tlTop
-        FontSize = 9
-      end
       object qrdbtotalbruto: TQRDBText
         Left = 635
         Top = 6
@@ -9640,15 +9584,15 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlTop
         FontSize = 10
       end
-      object QRDBText3: TQRDBText
+      object edObs: TQRDBText
         Left = 8
-        Top = 25
+        Top = 71
         Width = 26
-        Height = 65
+        Height = 16
         Size.Values = (
-          171.979166666666700000
+          42.333333333333330000
           21.166666666666670000
-          66.145833333333330000
+          187.854166666666700000
           68.791666666666670000)
         XLColumn = 0
         XLNumFormat = nfGeneral
@@ -9664,7 +9608,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         WrapStyle = BreakAnywhere
         FullJustify = False
         MaxBreakChars = 0
-        VerticalAlignment = tlTop
+        VerticalAlignment = tlBottom
         FontSize = 9
       end
     end

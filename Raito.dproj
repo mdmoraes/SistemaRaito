@@ -210,6 +210,12 @@
                     <Source Name="MainSource">Raito.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\mdmor\AppData\Local\tmssoftware\trial\TMSFNCUIPack RSXE14\Win32\FMXTMSFNCUIPackPkgDXE14.bpl">TMS FNC UI Pack for FMX</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\FMXTMSFNCCorePkgDXE14.bpl">TMS FNC Core for FMX</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\mdmor\AppData\Local\tmssoftware\trial\TMSFNCUIPack RSXE14\Win32\VCLTMSFNCUIPackPkgDXE14.bpl">TMS FNC UI Pack for VCL</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\VCLTMSFNCCorePkgDXE14.bpl">TMS FNC Core for VCL</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\TMSFNCCorePkgDEDXE14.bpl">TMS FNC Core for FMX/VCL Designtime</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\mdmor\AppData\Local\tmssoftware\trial\TMSFNCUIPack RSXE14\Win32\TMSFNCUIPackPkgDEDXE14.bpl">TMS FNC UI Pack for FMX/VCL Designtime</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp280.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>

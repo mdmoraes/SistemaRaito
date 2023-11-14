@@ -65,15 +65,12 @@ type
     QRBand4: TQRBand;
     qrlbl31: TQRLabel;
     qrlblObs: TQRLabel;
-    qrlblLembrete: TQRLabel;
     qrlblTipoDePedido: TQRLabel;
     qrdbTIPOPEDIDO: TQRDBText;
     qrdbOBS: TQRDBText;
-    qrdbLEMBRETE: TQRDBText;
     qrdbtotalbruto: TQRDBText;
     QRDBText1: TQRDBText;
     QRDBText2: TQRDBText;
-    QRDBText3: TQRDBText;
     queryRelPedidoPedidoId: TFDAutoIncField;
     queryRelPedidoDATA_PEDIDO: TDateField;
     queryRelPedidoCliente: TStringField;
@@ -106,6 +103,7 @@ type
     queryRelPedidoLIQ1: TFloatField;
     queryRelPedidoTOTALITENS: TFloatField;
     queryRelPedidoICMS: TStringField;
+    edObs: TQRDBText;
   private
     { Private declarations }
   public

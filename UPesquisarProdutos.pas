@@ -79,6 +79,14 @@ end;
 
 procedure TFrmPesquisarProdutos.CopiarProdutos;
 begin
+
+  if rb18.Checked = False or rb12.Checked = False or rb7.Checked = False then
+  begin
+    ShowMessage('É necessário escolher um ICMS !');
+    Abort;
+  end;
+
+
   DMRaito.FdTableItens.Edit;
 
   DMRaito.FdTableItens.Append;

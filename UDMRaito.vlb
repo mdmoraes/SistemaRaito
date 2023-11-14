@@ -23,9 +23,6 @@ Coordinates=251,10,165,410
 [dsCliente]
 Coordinates=19,385,68,36
 
-[FDPhysMySQLDriverLink1]
-Coordinates=937,1046,168,36
-
 [strngfldFdTbImportacaotemperatura]
 Coordinates=937,1156,221,36
 
@@ -45,7 +42,7 @@ Coordinates=467,738,104,36
 Coordinates=1238,1486,199,36
 
 []
-Coordinates=937,221,211,36
+Coordinates=937,1046,168,36
 
 [dsPedidos]
 Coordinates=128,1,68,36

@@ -1,7 +1,5 @@
 unit UDMRaito;
-
 interface
-
 uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
@@ -9,13 +7,11 @@ uses
   FireDAC.Phys.MySQLDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.VCLUI.Wait, FireDAC.Comp.UI, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Dialogs;
-
 type
   TDMRaito = class(TDataModule)
     FDConnection1: TFDConnection;
     FDTableCliente: TFDTable;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
-    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
     FdTbImportacao: TFDTable;
     FdTbImportacaocodigo: TStringField;
     strngfldFdTbImportacaodescricao: TStringField;
@@ -67,18 +63,6 @@ type
     dsCadastroDeProdutos: TDataSource;
     FdTablePedidos: TFDTable;
     FdTableItens: TFDTable;
-    FDTableVenda: TFDTable;
-    FDTableItemVenda: TFDTable;
-    DSVenda: TDataSource;
-    DSItemVenda: TDataSource;
-    FDTableVendaidvenda: TFDAutoIncField;
-    FDTableVendadata_venda: TDateField;
-    FDTableItemVendaiditem_venda: TFDAutoIncField;
-    FDTableItemVendaidvenda: TIntegerField;
-    FDTableVendaproduto: TStringField;
-    FDTableVendadescricao: TStringField;
-    FDTableItemVendaproduto: TStringField;
-    FDTableItemVendadescricao: TStringField;
     FDSchemaAdapter: TFDSchemaAdapter;
     FdTableContatoClienteContatoId: TFDAutoIncField;
     FdTableContatoClienteContato_IdCliente: TIntegerField;
@@ -195,45 +179,34 @@ type
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
     procedure FDTableClienteBeforePost(DataSet: TDataSet);
     procedure FdTablePedidosCalcFields(DataSet: TDataSet);
+    procedure FdTablePedidosNewRecord(DataSet: TDataSet);
+    procedure FdTableItensBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
-
 var
   DMRaito: TDMRaito;
-
 implementation
-
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
 {$R *.dfm}
-
 procedure TDMRaito.FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
 begin
   DMRaito.FdTablePedidos.CommitUpdates();
   DMRaito.FdTableItens.CommitUpdates();
-
 end;
-
 procedure TDMRaito.FDTableClienteBeforePost(DataSet: TDataSet);
 begin
-
 //gravar master antes. mm
 //DMRaito.FDTableCliente.Edit;
 //DMRaito.FDTableCliente.Post;
 end;
-
 procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
 var
 total, totalBruto: Double;
   begin
-     if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
-     begin
-      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório !');
-      Abort;
-     end;
+    
       DMRaito.FdTableItens.DisableControls;
       DMRaito.FdTableItens.First;
       total:= 0;
@@ -243,7 +216,6 @@ total, totalBruto: Double;
       total:= total + DMRaito.FdTableItensTotalItens.Value;
       DMRaito.FdTableItens.Next;
 
-
       end;
      // DMRaito.FdTableItens.Edit;
       DMRaito.FdTablePedidos.Edit;
@@ -251,8 +223,15 @@ total, totalBruto: Double;
       DMRaito.FdTablePedidos.Post;
       DMRaito.FdTableItens.EnableControls;
 
-
   end;
+procedure TDMRaito.FdTableItensBeforePost(DataSet: TDataSet);
+begin
+ if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
+     begin
+      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório !');
+      Abort;
+     end;
+end;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
@@ -268,6 +247,24 @@ procedure TDMRaito.FdTablePedidosCalcFields(DataSet: TDataSet);
 begin
    DMRaito.FdTablePedidosvrcomissao.Value:=
    (DMRaito.FdTablePedidoscomissao.Value * DMRaito.FdTablePedidostotalbruto.Value) /100;
+end;
+
+procedure TDMRaito.FdTablePedidosNewRecord(DataSet: TDataSet);
+//  var cont_reg:integer;
+begin
+//    with DMRaito.FdTablePedidos do
+//    try
+//    Open;
+//    DMRaito.FdTablePedidos.Edit;
+//    DMRaito.FdTablePedidosPedidoId.AsInteger:= Fields[0].AsInteger;
+//    cont_reg:=DMRaito.FdTablePedidos.RecNo;
+//    finally
+//    Close;
+//    end;
+//Quando o trigger criar o registro o número dele será aramazenado em cont_reg.
+//Após, abra sua tabela, dê um Refresh e digite o seguinte:
+//DMRaito.FdTablePedidos:=cont_reg;
+
 end;
 
 end.

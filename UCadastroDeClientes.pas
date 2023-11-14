@@ -8,11 +8,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, Vcl.StdCtrls,
   Vcl.Mask, Vcl.ExtCtrls, Vcl.DBCtrls, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Vcl.Buttons, Vcl.Consts, VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics,
-  VCL.TMSFNCGraphicsTypes, VCL.TMSFNCGridCell, VCL.TMSFNCGridOptions,
-  VCL.TMSFNCCustomControl, VCL.TMSFNCCustomScrollControl, VCL.TMSFNCGridData,
-  VCL.TMSFNCCustomGrid, VCL.TMSFNCGrid, VCL.TMSFNCCustomComponent,
-  VCL.TMSFNCGridDatabaseAdapter, Vcl.Grids, Vcl.DBGrids;
+  Vcl.Buttons, Vcl.Consts, Vcl.Grids, Vcl.DBGrids;
 
 type
   TfrmCadastroClientes = class(TForm)
@@ -214,8 +210,8 @@ begin
     panelTela.Enabled:= False;
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
 
-    DMRaito.FDTableCliente.EmptyDataSet;
-    DMRaito.FdTableContatoCliente.EmptyDataSet;
+//    DMRaito.FDTableCliente.EmptyDataSet;
+//    DMRaito.FdTableContatoCliente.EmptyDataSet;
 
     DMRaito.FDTableCliente.Active:= False;
     DMRaito.FDTableCliente.Active:= True;

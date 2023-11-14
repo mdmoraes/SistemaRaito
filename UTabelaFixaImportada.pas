@@ -118,6 +118,9 @@ begin
         FDQueryFiltro.Next;
 
       end;
+      DMRaito.FDTableTabelaFixa.Post;
+      DMRaito.FDTableTabelaFixa.ApplyUpdates(0);
+
     end;
 end;
 
@@ -178,8 +181,8 @@ procedure TfrmTabelaFixaImportada.btnImprimirClick(Sender: TObject);
 begin
    try
       Application.CreateForm(TfrmRelatorioRegistrosTabelaFixa, frmRelatorioRegistrosTabelaFixa);
-      DMRaito.FDTableTabelaFixa.Close;
-      DMRaito.FDTableTabelaFixa.Open();
+      DMRaito.FDTableTabelaFixa.ApplyUpdates(0);
+      DMRaito.FDTableTabelaFixa.CommitUpdates;
       frmRelatorioRegistrosTabelaFixa.qrlabelCount.Caption:= 'Total de Registros: ' + IntToStr(DMRaito.FDTableTabelaFixa.RecordCount);
       frmRelatorioRegistrosTabelaFixa.QRepTabelaFixa.Preview;
       finally
@@ -209,6 +212,10 @@ begin
   While not DMRaito.FDTableTabelaFixa.isEmpty do
     DMRaito.FDTableTabelaFixa.Delete;
   end;
+
+ // DMRaito.FDTableTabelaFixa.ApplyUpdates(0);
+//  DMRaito.FDTableTabelaFixa.CommitUpdates;
+//  DMRaito.FDTableTabelaFixa.Refresh;
 end;
 
 procedure TfrmTabelaFixaImportada.btnMontarListaClick(Sender: TObject);

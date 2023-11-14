@@ -8,7 +8,8 @@ uses
   Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, QuickRpt, qrpBaseCtrls,
   QRCtrls, Vcl.Consts, Vcl.ActnMan, Math, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Stan.Param;
+  FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Stan.Param, JvExExtCtrls,
+  JvExtComponent, JvDBRadioPanel;
 
 type
   TfrmPedido = class(TForm)
@@ -46,11 +47,9 @@ type
     lbl11: TLabel;
     dbedtcomissaovalor1: TDBEdit;
     lbl12: TLabel;
-    lbl13: TLabel;
     lokupcliente1: TDBLookupComboBox;
     lokuprepresentada: TDBLookupComboBox;
     dbmmoobs: TDBMemo;
-    dbmmoobs1: TDBMemo;
     dbgrdItens: TDBGrid;
     DBEditCliente: TDBEdit;
     SpeedButton1: TSpeedButton;
@@ -128,43 +127,45 @@ begin
 end;
 
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
+var cont_reg:integer;
 begin
     DMRaito.FdTablePedidos.Edit;
     DMRaito.FdTableItens.Edit;
-    if (dbrgrptipopedido.Value = 'Orçamento') or (dbrgrptipopedido.Value = 'Venda') then
+    if (dbrgrptipopedido.Value = '') or (dbrgrptipopedido.Value = '') then
     begin
+    ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
+    Abort
+    end
+    else
+    begin
+
     DMRaito.FdTablePedidos.Post;
     DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
-    end
-    else
-    ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
+    end;
 
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-//    DMRaito.FdTablePedidos.EmptyDataSet;
-//    DMRaito.FdTableItens.EmptyDataSet;
-
-    //VAI PARA O ÚLTIMO REGISTRO
-//    DMRaito.FDTablePedidos.Active:= False;
-//    DMRaito.FDTablePedidos.Active:= True;
-//
-//    DMRaito.FdTableItens.Active:= False;
-//    DMRaito.FdTableItens.Active:= True;
-
-//    DMRaito.FdTablePedidos.IndexName:= 'IdxPedidoId';
-//    DMRaito.FdTablePedidos.First;
-//    DMRaito.FdTablePedidos.Last;
+    DMRaito.FdTablePedidos.CachedUpdates:= True;
+    DMRaito.FdTableItens.CachedUpdates:= True;
 
 
+  //  if DMRaito.FdTablePedidos.State in [dsInsert] then
+ //   begin
+      DMRaito.FdTablePedidos.IndexName:= 'idxPedidoId';
+      DMRaito.FdTablePedidos.First;
+      DMRaito.FdTablePedidos.Last;
+  //    DMRaito.FdTablePedidos.Locate('PedidoId', dbedtnum_pedido.text,[]);
+ //   end;
+   //   DMRaito.FdTablePedidos.Locate('PedidoId', dbedtnum_pedido.text,[]);
 
 
 end;
 
 procedure TfrmPedido.btnImprimirClick(Sender: TObject);
-//gerar o relatório no QUICK REPORT
+//gerar o relatório de pedido no QUICK REPORT
 begin
     try
       Application.CreateForm(TfrmRelatorioPedido,frmRelatorioPedido);
@@ -180,6 +181,11 @@ begin
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Orçamento'
       else
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Venda';
+
+      frmRelatorioPedido.edObs.Lines.Text:= dbmmoobs.Text;
+
+//      frmRelatorioPedido.QRMemoLembrete.Lines.Text:= dbmmoobsLembrete.Text;
+ //     frmRelatorioPedido.QRExprMemoLembrete.Lines.Text:= dbmmoobs1.Text;
       frmRelatorioPedido.QRPQuickrep1.Preview;
       frmRelatorioPedido.queryRelPedido.Close;
       finally
@@ -192,21 +198,19 @@ begin
   panelConfirma.Enabled:= True;
   panelNav.Visible:= False;
   panelTela.Enabled:= True;
-//       try
-//          DMRaito.FdTablePedido.DisableControls;
-//          DMRaito.FdTablePedido.IndexName:= 'idxPedidoId';
-//          DMRaito.FdTablePedido.First;
-//          DMRaito.FdTablePedido.Last;
-//          if DMRaito.FdTablePedido['PedidoId']<> null then
-//          it := DMRaito.FdTablePedido['PedidoId']
-//          else
- //         it:= 0;
+  DMRaito.FdTablePedidos.Edit;
+//  Try
+//  DMRaito.FDConnection1.StartTransaction;
+  DMRaito.FdTablePedidos.Append;
+  DMRaito.FdTablePedidos['data_pedido']:= DateToStr(Now);
+  DBEditCliente.SetFocus;
+//  DMRaito.FdTablePedidos.Post;
+//  DMRaito.FDConnection1.Commit;
+//  Except
+//  DMRaito.FDConnection1.Rollback;
+//  End;
 
 
-          DMRaito.FdTablePedidos.Edit;
-          DMRaito.FdTablePedidos.Append;
-          DMRaito.FdTablePedidos['data_pedido']:= DateToStr(Now);
-          DBEditCliente.SetFocus;
 
 end;
 
@@ -242,11 +246,20 @@ end;
 
 procedure TfrmPedido.DBEditClienteExit(Sender: TObject);
 begin
-if DMRaito.FdTablePedidos.State in [dsinsert, dsEdit] then
-          begin
-          DMRaito.FDTablePedidos.Post;
-          DMRaito.FDTablePedidos.Edit;
-          end;
+    if DMRaito.FdTablePedidos.State in [dsinsert, dsEdit] then
+      begin
+      DMRaito.FDTablePedidos.Post;
+      DMRaito.FDTablePedidos.Edit;
+      end;
+
+//  Try
+//  DMRaito.FDConnection1.StartTransaction;
+//  DMRaito.FDConnection1.Commit;
+//  Except
+//  DMRaito.FDConnection1.Rollback;
+//  End;
+
+
 end;
 
 procedure TfrmPedido.dbgrdItensCellClick(Column: TColumn);
@@ -313,26 +326,21 @@ end;
 
 procedure TfrmPedido.FormShow(Sender: TObject);
 begin
-    DMRaito.FDTablePedidos.Active:= False;
-    DMRaito.FDTablePedidos.Active:= True;
-
-    DMRaito.FdTableItens.Active:= False;
-    DMRaito.FdTableItens.Active:= True;
-
-    DMRaito.FdTablePedidos.IndexName:= '';
-    DMRaito.FdTablePedidos.First;
-    DMRaito.FdTablePedidos.Last;
+//    DMRaito.FDTablePedidos.Active:= False;
+//    DMRaito.FDTablePedidos.Active:= True;
+//
+//    DMRaito.FdTableItens.Active:= False;
+//    DMRaito.FdTableItens.Active:= True;
+//
+//    DMRaito.FdTablePedidos.IndexName:= '';
+//    DMRaito.FdTablePedidos.First;
+//    DMRaito.FdTablePedidos.Last;
 end;
 
 procedure TfrmPedido.LimparCache(Sender: TObject);
 begin
   DMRaito.FdTablePedidos.CommitUpdates();
   DMRaito.FdTableItens.CommitUpdates();
-//  DMRaito.FdTablePedido.EmptyDataSet;
-//  DMRaito.FdTableItens.EmptyDataSet;
-
-
-
 end;
 
 procedure TfrmPedido.lokupclienteClick(Sender: TObject);

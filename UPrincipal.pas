@@ -3,8 +3,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.UITypes, Vcl.Consts,
-  VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes,
-  VCL.TMSFNCCustomControl, VCL.TMSFNCImage, JvComponentBase, JvBalloonHint,
+  JvComponentBase, JvBalloonHint,
   JvFormAutoSize;
 type
   TfrmPrincipal = class(TForm)
@@ -15,7 +14,6 @@ type
     MenuSubProdutos: TMenuItem;
     MenuSairdoSistema: TMenuItem;
     MenuTransportadora: TMenuItem;
-    TMSFNCImage1: TTMSFNCImage;
     SubMenuEmissodePedidos: TMenuItem;
     BalloonHint1: TBalloonHint;
     subMenuPlanilhaFixa: TMenuItem;
@@ -37,7 +35,9 @@ var
 implementation
 uses UCadastroDeClientes, UImportarPlanilha, UCadastroDeProdutos,
  UPedido, UCadastroTransportadora, UTabelaFixaImportada;
-{$R *.dfm}
+
+ {$R *.dfm}
+
 procedure TfrmPrincipal.MenuClienteClick(Sender: TObject);
 begin
  try
@@ -55,6 +55,7 @@ begin
   Application.Terminate;
   end;
 end;
+
 procedure TfrmPrincipal.MenuSubImportarPlanilhaClick(Sender: TObject);
 begin
     try
@@ -64,6 +65,7 @@ begin
     frmImportarPlanilha.Free;
     end;
 end;
+
 procedure TfrmPrincipal.MenuSubProdutosClick(Sender: TObject);
 begin
     try
@@ -73,6 +75,7 @@ begin
     frmCadastroDeProdutos.Free;
     end;
 end;
+
 procedure TfrmPrincipal.MenuTransportadoraClick(Sender: TObject);
 begin
    try
