@@ -102,26 +102,25 @@ procedure TfrmTabelaFixaImportada.btnCopiarItensClick(Sender: TObject);
 begin
     begin
     FDQueryFiltro.First;
-      while not FDQueryFiltro.Eof do
-      begin
-        DMRaito.FDTableTabelaFixa.Append;
-        DMRaito.FDTableTabelaFixa.FieldByName('codigo').Value := FDQueryFiltro.Fields[0].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('descricao').Value := FDQueryFiltro.Fields[1].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('grupo').Value := FDQueryFiltro.Fields[2].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('isolacao').Value := FDQueryFiltro.Fields[3].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('classe').Value := FDQueryFiltro.Fields[4].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('temperatura').Value := FDQueryFiltro.Fields[5].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('kg_km').Value := FDQueryFiltro.Fields[6].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('icms18').Value := FDQueryFiltro.Fields[7].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('icms12').Value := FDQueryFiltro.Fields[8].Value;
-        DMRaito.FDTableTabelaFixa.FieldByName('icms7').Value := FDQueryFiltro.Fields[9].Value;
-        FDQueryFiltro.Next;
+          while not FDQueryFiltro.Eof do
+          begin
+            DMRaito.FDTableTabelaFixa.Append;
+            DMRaito.FDTableTabelaFixa.FieldByName('codigo').Value := FDQueryFiltro.Fields[0].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('descricao').Value := FDQueryFiltro.Fields[1].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('grupo').Value := FDQueryFiltro.Fields[2].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('isolacao').Value := FDQueryFiltro.Fields[3].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('classe').Value := FDQueryFiltro.Fields[4].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('temperatura').Value := FDQueryFiltro.Fields[5].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('kg_km').Value := FDQueryFiltro.Fields[6].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('icms18').Value := FDQueryFiltro.Fields[7].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('icms12').Value := FDQueryFiltro.Fields[8].Value;
+            DMRaito.FDTableTabelaFixa.FieldByName('icms7').Value := FDQueryFiltro.Fields[9].Value;
+            FDQueryFiltro.Next;
 
-      end;
-      DMRaito.FDTableTabelaFixa.Post;
-      DMRaito.FDTableTabelaFixa.ApplyUpdates(0);
-
+          end;
     end;
+     DMRaito.FDTableTabelaFixa.Post;
+     DMRaito.FDTableTabelaFixa.ApplyUpdates(0);
 end;
 
 procedure TfrmTabelaFixaImportada.btnFecharClick(Sender: TObject);

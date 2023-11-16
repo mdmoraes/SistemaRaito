@@ -796,7 +796,7 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'obs'
       Origin = 'obs'
-      Size = 100
+      Size = 800
     end
     object FdTablePedidoslembrete: TStringField
       AutoGenerateValue = arDefault
@@ -830,6 +830,8 @@ object DMRaito: TDMRaito
     object FdTablePedidosvrcomissao: TFloatField
       FieldKind = fkCalculated
       FieldName = 'vrcomissao'
+      DisplayFormat = 'R$  #,##0.00'
+      EditFormat = 'R$  #,##0.00'
       Calculated = True
     end
   end
@@ -899,6 +901,7 @@ object DMRaito: TDMRaito
       Origin = 'qtd'
     end
     object FdTableItensvrunit: TFloatField
+      Alignment = taLeftJustify
       AutoGenerateValue = arDefault
       FieldName = 'vrunit'
       Origin = 'vrunit'
@@ -935,6 +938,31 @@ object DMRaito: TDMRaito
       currency = True
       Calculated = True
     end
+    object FdTableItensliq2: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'liq2'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      currency = True
+      Calculated = True
+    end
+    object FdTableItensliq3: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'liq3'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      currency = True
+      Calculated = True
+    end
+    object FdTableItensTotalDesc: TFloatField
+      Alignment = taLeftJustify
+      FieldKind = fkCalculated
+      FieldName = 'TotalDesc'
+      DisplayFormat = 'R$  #,##0.00'
+      EditFormat = 'R$  #,##0.00'
+      currency = True
+      Calculated = True
+    end
     object FdTableItensicms: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'icms'
@@ -942,10 +970,11 @@ object DMRaito: TDMRaito
       Size = 2
     end
     object FdTableItensTotalItens: TFloatField
+      Alignment = taLeftJustify
       FieldKind = fkCalculated
       FieldName = 'TotalItens'
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
       currency = True
       Calculated = True
     end

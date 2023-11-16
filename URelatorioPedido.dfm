@@ -2,7 +2,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
   Left = 0
   Top = 0
   Caption = 'frmRelatorioPedido'
-  ClientHeight = 630
+  ClientHeight = 776
   ClientWidth = 1146
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +15,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
   object QRPQuickrep1: TQRPQuickrep
     Left = 8
     Top = 8
-    Width = 794
+    Width = 937
     Height = 1123
     ShowingPreview = False
     DataSet = queryRelPedido
@@ -79,7 +79,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand1: TQRBand
       Left = 19
       Top = 19
-      Width = 756
+      Width = 899
       Height = 115
       Frame.DrawBottom = True
       AlignToBottom = False
@@ -88,7 +88,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ForceNewPage = False
       Size.Values = (
         304.270833333333300000
-        2000.250000000000000000)
+        2378.604166666667000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbPageHeader
@@ -7766,7 +7766,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand2: TQRBand
       Left = 19
       Top = 379
-      Width = 756
+      Width = 899
       Height = 18
       AlignToBottom = False
       TransparentBand = False
@@ -7781,7 +7781,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ParentFont = False
       Size.Values = (
         47.625000000000000000
-        2000.250000000000000000)
+        2378.604166666667000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbDetail
@@ -8047,7 +8047,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand3: TQRBand
       Left = 19
       Top = 134
-      Width = 756
+      Width = 899
       Height = 245
       Frame.DrawBottom = True
       AlignToBottom = False
@@ -8056,7 +8056,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ForceNewPage = True
       Size.Values = (
         648.229166666666700000
-        2000.250000000000000000)
+        2378.604166666667000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbTitle
@@ -8269,13 +8269,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrsysdt1: TQRSysData
         Left = 606
         Top = 30
-        Width = 66
+        Width = 114
         Height = 16
         Size.Values = (
           42.333333333333330000
           1603.375000000000000000
           79.375000000000000000
-          174.625000000000000000)
+          301.625000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -9392,16 +9392,16 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand4: TQRBand
       Left = 19
       Top = 397
-      Width = 756
-      Height = 120
+      Width = 899
+      Height = 268
       Frame.DrawTop = True
       AlignToBottom = False
       TransparentBand = False
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        317.500000000000000000
-        2000.250000000000000000)
+        709.083333333333300000
+        2378.604166666667000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbSummary
@@ -9433,35 +9433,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         WrapStyle = BreakOnSpaces
         VerticalAlignment = tlTop
         FontSize = 10
-      end
-      object qrlblObs: TQRLabel
-        Left = 6
-        Top = 40
-        Width = 73
-        Height = 16
-        Size.Values = (
-          42.333333333333330000
-          15.875000000000000000
-          105.833333333333300000
-          193.145833333333300000)
-        XLColumn = 0
-        XLNumFormat = nfGeneral
-        ActiveInPreview = False
-        Alignment = taLeftJustify
-        AlignToBand = False
-        Caption = 'Observa'#231#227'o:'
-        Color = clWhite
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = False
-        ExportAs = exptText
-        WrapStyle = BreakOnSpaces
-        VerticalAlignment = tlTop
-        FontSize = 9
       end
       object qrlblTipoDePedido: TQRLabel
         Left = 304
@@ -9584,32 +9555,33 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlTop
         FontSize = 10
       end
-      object edObs: TQRDBText
-        Left = 8
-        Top = 71
-        Width = 26
-        Height = 16
+      object QRDBRichText1: TQRDBRichText
+        AlignWithMargins = True
+        Left = 9
+        Top = 57
+        Width = 878
+        Height = 199
         Size.Values = (
-          42.333333333333330000
-          21.166666666666670000
-          187.854166666666700000
-          68.791666666666670000)
+          526.520833333333300000
+          23.812500000000000000
+          150.812500000000000000
+          2323.041666666667000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
         Alignment = taLeftJustify
-        AlignToBand = False
         AutoStretch = True
-        Color = clWhite
-        DataSet = queryRelPedido
-        DataField = 'OBS'
+        Color = clWindow
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        HiresExport = False
         Transparent = False
-        ExportAs = exptText
-        WrapStyle = BreakAnywhere
-        FullJustify = False
-        MaxBreakChars = 0
-        VerticalAlignment = tlBottom
-        FontSize = 9
+        YIncrement = 50
+        DataField = 'OBS'
+        DataSet = queryRelPedido
       end
     end
   end
@@ -9693,9 +9665,10 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
     object queryRelPedidoOBS: TStringField
       AutoGenerateValue = arDefault
+      DisplayWidth = 800
       FieldName = 'OBS'
       Origin = 'obs'
-      Size = 100
+      Size = 800
     end
     object queryRelPedidoLEMBRETE: TStringField
       AutoGenerateValue = arDefault

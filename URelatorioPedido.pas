@@ -64,7 +64,6 @@ type
     QRShape1: TQRShape;
     QRBand4: TQRBand;
     qrlbl31: TQRLabel;
-    qrlblObs: TQRLabel;
     qrlblTipoDePedido: TQRLabel;
     qrdbTIPOPEDIDO: TQRDBText;
     qrdbOBS: TQRDBText;
@@ -103,7 +102,7 @@ type
     queryRelPedidoLIQ1: TFloatField;
     queryRelPedidoTOTALITENS: TFloatField;
     queryRelPedidoICMS: TStringField;
-    edObs: TQRDBText;
+    QRDBRichText1: TQRDBRichText;
   private
     { Private declarations }
   public

@@ -12,6 +12,18 @@ object frmBuscarProdutoParaPedido: TfrmBuscarProdutoParaPedido
   Font.Style = []
   Position = poScreenCenter
   TextHeight = 15
+  object btnCopiarItensSelecionados: TSpeedButton
+    Left = 464
+    Top = 55
+    Width = 209
+    Height = 22
+    Hint = 'Copia os itens selecionados para a tela de Itens do pedido'
+    CustomHint = frmPedido.BalloonHint1
+    Caption = 'Copiar itens selecionados'
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = btnCopiarItensSelecionadosClick
+  end
   object gridItens: TJvDBGrid
     Left = 8
     Top = 99
@@ -20,6 +32,7 @@ object frmBuscarProdutoParaPedido: TfrmBuscarProdutoParaPedido
     DataSource = DMRaito.dsImportacao
     DrawingStyle = gdsGradient
     GradientEndColor = clMoneyGreen
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
     ReadOnly = True
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -28,8 +41,9 @@ object frmBuscarProdutoParaPedido: TfrmBuscarProdutoParaPedido
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
     OnDblClick = gridItensDblClick
-    AlternateRowColor = 13959039
-    AlternateRowFontColor = clBlue
+    MultiSelect = True
+    AlternateRowColor = clSilver
+    AlternateRowFontColor = clBlack
     SelectColumnsDialogStrings.Caption = 'Select columns'
     SelectColumnsDialogStrings.OK = '&OK'
     SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'

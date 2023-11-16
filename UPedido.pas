@@ -1,7 +1,5 @@
 unit UPedido;
-
 interface
-
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Mask,
@@ -9,8 +7,8 @@ uses
   QRCtrls, Vcl.Consts, Vcl.ActnMan, Math, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Stan.Param, JvExExtCtrls,
-  JvExtComponent, JvDBRadioPanel;
-
+  JvExtComponent, JvDBRadioPanel, JvExControls, JvLabel, JvDBControls,
+  JvExStdCtrls, JvRichEdit, JvDBRichEdit;
 type
   TfrmPedido = class(TForm)
     panelNav: TPanel;
@@ -46,14 +44,13 @@ type
     dbedtcomissaopercentual: TDBEdit;
     lbl11: TLabel;
     dbedtcomissaovalor1: TDBEdit;
-    lbl12: TLabel;
     lokupcliente1: TDBLookupComboBox;
     lokuprepresentada: TDBLookupComboBox;
-    dbmmoobs: TDBMemo;
     dbgrdItens: TDBGrid;
     DBEditCliente: TDBEdit;
     SpeedButton1: TSpeedButton;
     DBEditIdCliente: TDBEdit;
+    edtObs: TJvDBRichEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -68,8 +65,6 @@ type
     procedure dbgrdItensEditButtonClick(Sender: TObject);
     procedure dbgrdItensKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure dbgrdItensDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbgrdItensCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -81,23 +76,17 @@ type
   public
     { Public declarations }
   end;
-
 var
   frmPedido: TfrmPedido;
-
 implementation
-
 uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos, UPesquisaPedido,
  URelatorioPedido, UPesquisarClientes, UBuscarProdutoParaEmissaoDePedido, UEscolherTelaParaPedido;
 
-
 {$R *.dfm}
-
 procedure TfrmPedido.btn1Click(Sender: TObject);
 begin
 Close;
 end;
-
 procedure TfrmPedido.btnAlterarClick(Sender: TObject);
 begin
     panelConfirma.Enabled:= True;
@@ -105,7 +94,6 @@ begin
     panelTela.Enabled:= True;
     DMRaito.FdTablePedidos.Edit;
 end;
-
 procedure TfrmPedido.btnCancelarClick(Sender: TObject);
 begin
     panelConfirma.Enabled:= False;
@@ -114,9 +102,7 @@ begin
     DMRaito.FdTablePedidos.Cancel;
     DMRaito.FdTableItens.Cancel;
 end;
-
 procedure TfrmPedido.btnExcluirClick(Sender: TObject);
-
 begin
  if MessageDlg('DESEJA EXCLUIR ESSE REGISTRO ?',
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
@@ -125,20 +111,26 @@ begin
     ShowMessage('Registro excluído com sucesso!');
   end;
 end;
-
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
 var cont_reg:integer;
 begin
     DMRaito.FdTablePedidos.Edit;
     DMRaito.FdTableItens.Edit;
+
     if (dbrgrptipopedido.Value = '') or (dbrgrptipopedido.Value = '') then
     begin
     ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
     Abort
-    end
-    else
-    begin
+    end else
+    //verifica o campo qtd.
 
+   if (dbgrdItens.Columns.Items[6].Field.Text < '1') then
+   begin
+   ShowMessage('Preencimento da quantidade é obrigatório, igual ou maior que 1');
+   Abort;
+   end else
+
+    begin
     DMRaito.FdTablePedidos.Post;
     DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
@@ -146,11 +138,9 @@ begin
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
     end;
-
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
     DMRaito.FdTablePedidos.CachedUpdates:= True;
     DMRaito.FdTableItens.CachedUpdates:= True;
-
 
   //  if DMRaito.FdTablePedidos.State in [dsInsert] then
  //   begin
@@ -161,29 +151,23 @@ begin
  //   end;
    //   DMRaito.FdTablePedidos.Locate('PedidoId', dbedtnum_pedido.text,[]);
 
-
 end;
-
 procedure TfrmPedido.btnImprimirClick(Sender: TObject);
 //gerar o relatório de pedido no QUICK REPORT
 begin
     try
       Application.CreateForm(TfrmRelatorioPedido,frmRelatorioPedido);
      // DMRatio.TBCadCliente.Locate('IdCliente', dbCodCliente.Text, []);
-
     frmRelatorioPedido.queryRelPedido.Close;
     frmRelatorioPedido.queryRelPedido.Params.ClearValues();
     frmRelatorioPedido.queryRelPedido.Params[0].AsInteger := DMRaito.FdTablePedidosPedidoId.Value;      //StrToInt(dbedtnum_pedido.Text);
     frmRelatorioPedido.queryRelPedido.Prepare;
     frmRelatorioPedido.queryRelPedido.Open();
-
       if DMRaito.FdTablePedidosTipoPedido.Value = 'Orçamento' then
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Orçamento'
       else
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Venda';
-
-      frmRelatorioPedido.edObs.Lines.Text:= dbmmoobs.Text;
-
+  //    frmRelatorioPedido.qrLabelObs.Caption:= edtObs.Field.Text;
 //      frmRelatorioPedido.QRMemoLembrete.Lines.Text:= dbmmoobsLembrete.Text;
  //     frmRelatorioPedido.QRExprMemoLembrete.Lines.Text:= dbmmoobs1.Text;
       frmRelatorioPedido.QRPQuickrep1.Preview;
@@ -192,7 +176,6 @@ begin
       frmRelatorioPedido.Free;
       end;
 end;
-
 procedure TfrmPedido.btnNovoClick(Sender: TObject);
 begin
   panelConfirma.Enabled:= True;
@@ -211,9 +194,7 @@ begin
 //  End;
 
 
-
 end;
-
 procedure TfrmPedido.btnNovoClienteClick(Sender: TObject);
 begin
  try
@@ -223,7 +204,6 @@ begin
  frmCadastroClientes.Free;
  end;
 end;
-
 procedure TfrmPedido.btnPesquisaClick(Sender: TObject);
 begin
 try
@@ -233,7 +213,6 @@ try
  FrmPesquisaPedido.Free;
  end;
 end;
-
 procedure TfrmPedido.ButtonPesquisarProdtoClick(Sender: TObject);
 begin
 try
@@ -243,7 +222,6 @@ try
  FrmPesquisarProdutos.Free;
  end;
 end;
-
 procedure TfrmPedido.DBEditClienteExit(Sender: TObject);
 begin
     if DMRaito.FdTablePedidos.State in [dsinsert, dsEdit] then
@@ -251,7 +229,6 @@ begin
       DMRaito.FDTablePedidos.Post;
       DMRaito.FDTablePedidos.Edit;
       end;
-
 //  Try
 //  DMRaito.FDConnection1.StartTransaction;
 //  DMRaito.FDConnection1.Commit;
@@ -259,9 +236,7 @@ begin
 //  DMRaito.FDConnection1.Rollback;
 //  End;
 
-
 end;
-
 procedure TfrmPedido.dbgrdItensCellClick(Column: TColumn);
 begin
 //    if dbgrdItens.SelectedIndex = 2 then
@@ -271,30 +246,6 @@ begin
 //    end;
 end;
 
-procedure TfrmPedido.dbgrdItensDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
-var
-  Check: Integer;
-  R: TRect;
-begin
-  //zebrar a grid
-
-   if not (gdSelected in State) then
-  begin
-    if Odd((Sender as TDBGrid).DataSource.DataSet.RecNo) then
-      (Sender as TDBGrid).Canvas.Brush.Color:= clWhite
-    else
-      (Sender as TDBGrid).Canvas.Brush.Color:= $edecd8;       //$00F1F2F3; // leve cinza
-
-    // Aplicando prto para a cor da fonte
-    (Sender as TDBGrid).Canvas.Font.Color:= clBlack;
-
-    (Sender as TDBGrid).Canvas.FillRect(Rect);
-    (Sender as TDBGrid).Canvas.TextOut(Rect.Left + 2, Rect.Top,
-    Column.Field.DisplayText);
-  end;
-
-end;
 
 procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
 begin
@@ -305,7 +256,6 @@ begin
  frmEscolherTelaParaPedidos.Free;
  end;
 end;
-
 procedure TfrmPedido.dbgrdItensKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -318,12 +268,10 @@ begin
        end;
   end;
 end;
-
 procedure TfrmPedido.FormCreate(Sender: TObject);
 begin
 DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
 end;
-
 procedure TfrmPedido.FormShow(Sender: TObject);
 begin
 //    DMRaito.FDTablePedidos.Active:= False;
@@ -336,18 +284,15 @@ begin
 //    DMRaito.FdTablePedidos.First;
 //    DMRaito.FdTablePedidos.Last;
 end;
-
 procedure TfrmPedido.LimparCache(Sender: TObject);
 begin
   DMRaito.FdTablePedidos.CommitUpdates();
   DMRaito.FdTableItens.CommitUpdates();
 end;
-
 procedure TfrmPedido.lokupclienteClick(Sender: TObject);
 begin
  //   DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
 end;
-
 procedure TfrmPedido.SpeedButton1Click(Sender: TObject);
 begin
  try
@@ -357,5 +302,4 @@ begin
     FrmPesquisarClientes.Free;
     end;
 end;
-
 end.

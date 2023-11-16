@@ -4,7 +4,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.UITypes, Vcl.Consts,
   JvComponentBase, JvBalloonHint,
-  JvFormAutoSize;
+  JvFormAutoSize, Vcl.ExtCtrls;
 type
   TfrmPrincipal = class(TForm)
     mm1: TMainMenu;
@@ -18,6 +18,7 @@ type
     BalloonHint1: TBalloonHint;
     subMenuPlanilhaFixa: TMenuItem;
     JvFormAutoSize1: TJvFormAutoSize;
+    Image1: TImage;
     procedure MenuClienteClick(Sender: TObject);
     procedure MenuSubImportarPlanilhaClick(Sender: TObject);
     procedure MenuSubProdutosClick(Sender: TObject);

@@ -174,6 +174,9 @@ type
     dsTabelaFixa: TDataSource;
     FdTableItensicms: TStringField;
     FdTablePedidosvrcomissao: TFloatField;
+    FdTableItensliq2: TFloatField;
+    FdTableItensliq3: TFloatField;
+    FdTableItensTotalDesc: TFloatField;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
@@ -206,7 +209,14 @@ procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
 var
 total, totalBruto: Double;
   begin
-    
+//   if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
+//     begin
+//      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório, verifique. !');
+//      Abort;
+//     end;
+
+
+
       DMRaito.FdTableItens.DisableControls;
       DMRaito.FdTableItens.First;
       total:= 0;
@@ -223,24 +233,40 @@ total, totalBruto: Double;
       DMRaito.FdTablePedidos.Post;
       DMRaito.FdTableItens.EnableControls;
 
+
+
   end;
 procedure TDMRaito.FdTableItensBeforePost(DataSet: TDataSet);
 begin
- if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
-     begin
-      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório !');
-      Abort;
-     end;
+// if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
+//     begin
+//      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório !');
+//      Abort;
+//     end;
 end;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
-//DMRaito.FdTableItens.Edit;
+//cálculo liq1
 DMRaito.FdTableItensliq1.Value:=
-((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp1.Value) /100 * DMRaito.FdTableItensqtd.Value);
-////
+((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp1.Value) /100) * DMRaito.FdTableItensqtd.Value;
+
+//cálculo liq2
+DMRaito.FdTableItensliq2.Value:=
+((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp2.Value) /100) * DMRaito.FdTableItensqtd.Value;
+
+//cálculo liq3
+DMRaito.FdTableItensliq3.Value:=
+((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp3.Value) /100) * DMRaito.FdTableItensqtd.Value;
+
+//cálculo TotalDesc
+DMRaito.FdTableItensTotalDesc.Value:=
+(DMRaito.FdTableItensliq1.Value + DMRaito.FdTableItensliq2.Value + DMRaito.FdTableItensliq3.Value);
+
+
+//cálculo TotalItens
 DMRaito.FdTableItensTotalItens.Value :=
-((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensqtd.Value - DMRaito.FdTableItensliq1.Value));
+((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensqtd.Value) - DMRaito.FdTableItensTotalDesc.Value);
 end;
 
 procedure TDMRaito.FdTablePedidosCalcFields(DataSet: TDataSet);

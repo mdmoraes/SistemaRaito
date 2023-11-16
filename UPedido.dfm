@@ -439,13 +439,6 @@ object frmPedido: TfrmPedido
       Caption = 'comissaovalor'
       FocusControl = dbedtcomissaovalor1
     end
-    object lbl12: TLabel
-      Left = 9
-      Top = 208
-      Width = 19
-      Height = 15
-      Caption = 'obs'
-    end
     object SpeedButton1: TSpeedButton
       Left = 561
       Top = 30
@@ -514,7 +507,7 @@ object frmPedido: TfrmPedido
     end
     object dbedtcondicoespagto1: TDBEdit
       Left = 9
-      Top = 173
+      Top = 170
       Width = 144
       Height = 23
       DataField = 'condicoespagto'
@@ -523,7 +516,7 @@ object frmPedido: TfrmPedido
     end
     object dbedtcomissaopercentual: TDBEdit
       Left = 159
-      Top = 173
+      Top = 170
       Width = 58
       Height = 23
       DataField = 'Comissao'
@@ -532,7 +525,7 @@ object frmPedido: TfrmPedido
     end
     object dbedtcomissaovalor1: TDBEdit
       Left = 250
-      Top = 173
+      Top = 170
       Width = 97
       Height = 23
       DataField = 'vrcomissao'
@@ -572,32 +565,15 @@ object frmPedido: TfrmPedido
       TabOrder = 7
       OnClick = lokupclienteClick
     end
-    object dbmmoobs: TDBMemo
-      Left = 9
-      Top = 221
-      Width = 625
-      Height = 68
-      Color = clGradientActiveCaption
-      DataField = 'Obs'
-      DataSource = DMRaito.dsPedidos
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      ScrollBars = ssBoth
-      TabOrder = 8
-      WantTabs = True
-    end
     object dbgrdItens: TDBGrid
       Left = 0
       Top = 320
       Width = 1233
       Height = 217
+      BorderStyle = bsNone
       Color = clInactiveCaption
       DataSource = DMRaito.dsItens
-      FixedColor = clMoneyGreen
+      FixedColor = clWindow
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -12
@@ -605,13 +581,12 @@ object frmPedido: TfrmPedido
       Font.Style = []
       Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
-      OnDrawColumnCell = dbgrdItensDrawColumnCell
       OnEditButtonClick = dbgrdItensEditButtonClick
       OnKeyDown = dbgrdItensKeyDown
       Columns = <
@@ -697,10 +672,11 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 46
+          Width = 39
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'vrunit'
           Title.Alignment = taCenter
@@ -711,7 +687,7 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 76
+          Width = 52
           Visible = True
         end
         item
@@ -724,7 +700,7 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 45
+          Width = 40
           Visible = True
         end
         item
@@ -754,6 +730,18 @@ object frmPedido: TfrmPedido
           Visible = True
         end
         item
+          Alignment = taRightJustify
+          Expanded = False
+          FieldName = 'TotalDesc'
+          ReadOnly = True
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
+          Visible = True
+        end
+        item
           Expanded = False
           FieldName = 'liq1'
           Title.Alignment = taCenter
@@ -769,6 +757,7 @@ object frmPedido: TfrmPedido
           Alignment = taCenter
           Expanded = False
           FieldName = 'icms'
+          ReadOnly = True
           Title.Alignment = taCenter
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clTeal
@@ -779,6 +768,7 @@ object frmPedido: TfrmPedido
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'TotalItens'
           Font.Charset = DEFAULT_CHARSET
@@ -786,6 +776,7 @@ object frmPedido: TfrmPedido
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
+          ReadOnly = True
           Title.Alignment = taCenter
           Title.Caption = 'Total Itens'
           Title.Font.Charset = DEFAULT_CHARSET
@@ -804,17 +795,36 @@ object frmPedido: TfrmPedido
       Height = 23
       DataField = 'cliente'
       DataSource = DMRaito.dsPedidos
-      TabOrder = 10
+      TabOrder = 9
       OnExit = DBEditClienteExit
     end
     object DBEditIdCliente: TDBEdit
-      Left = 728
-      Top = 136
+      Left = 1024
+      Top = 32
       Width = 89
       Height = 23
       DataField = 'cadastroclientes_idcliente'
       DataSource = DMRaito.dsPedidos
+      TabOrder = 10
+      Visible = False
+    end
+    object edtObs: TJvDBRichEdit
+      Left = 401
+      Top = 192
+      Width = 672
+      Height = 97
+      DataField = 'obs'
+      DataSource = DMRaito.dsPedidos
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      PlainText = True
       TabOrder = 11
+      UndoLimit = 800
+      WantTabs = True
     end
   end
   object dbedttotaldopedido: TDBEdit
