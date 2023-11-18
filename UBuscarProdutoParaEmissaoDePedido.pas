@@ -67,17 +67,17 @@ begin
           if rb18.Checked = true then
           begin
           frmPedido.dbgrdItens.Columns.Items[13].Field.Text := '18';
-          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[11].Field.Text;
+          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[3].Field.Text;
           end;
           if rb12.Checked = true then
           begin
           frmPedido.dbgrdItens.Columns.Items[13].Field.Text := '12';
-          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[12].Field.Text;
+          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[4].Field.Text;
           end;
           if rb7.Checked = true then
           begin
           frmPedido.dbgrdItens.Columns.Items[13].Field.Text := '7';
-          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[13].Field.Text;
+          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[5].Field.Text;
           end;
          // frmPedido.dbgrdItens.SelectedIndex := 6;
          btnFechar.Click;

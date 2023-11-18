@@ -15,7 +15,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
   object QRPQuickrep1: TQRPQuickrep
     Left = 8
     Top = 8
-    Width = 937
+    Width = 794
     Height = 1123
     ShowingPreview = False
     DataSet = queryRelPedido
@@ -79,7 +79,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand1: TQRBand
       Left = 19
       Top = 19
-      Width = 899
+      Width = 756
       Height = 115
       Frame.DrawBottom = True
       AlignToBottom = False
@@ -88,7 +88,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ForceNewPage = False
       Size.Values = (
         304.270833333333300000
-        2378.604166666667000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbPageHeader
@@ -7766,7 +7766,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand2: TQRBand
       Left = 19
       Top = 379
-      Width = 899
+      Width = 756
       Height = 18
       AlignToBottom = False
       TransparentBand = False
@@ -7781,7 +7781,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ParentFont = False
       Size.Values = (
         47.625000000000000000
-        2378.604166666667000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbDetail
@@ -7850,19 +7850,19 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 6
       end
       object qrdbtxtQTD: TQRDBText
-        Left = 426
+        Left = 357
         Top = 0
         Width = 18
         Height = 11
         Size.Values = (
           29.104166666666670000
-          1127.125000000000000000
+          944.562500000000000000
           0.000000000000000000
           47.625000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
-        Alignment = taLeftJustify
+        Alignment = taRightJustify
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
@@ -7882,13 +7882,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 6
       end
       object qrdbtxtVALORUNIT: TQRDBText
-        Left = 466
+        Left = 397
         Top = 0
         Width = 13
         Height = 11
         Size.Values = (
           29.104166666666670000
-          1232.958333333333000000
+          1050.395833333333000000
           0.000000000000000000
           34.395833333333330000)
         XLColumn = 0
@@ -7914,13 +7914,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 6
       end
       object qrdbtxtPERCENTUAL1: TQRDBText
-        Left = 554
+        Left = 475
         Top = 0
         Width = 10
         Height = 11
         Size.Values = (
           29.104166666666670000
-          1465.791666666667000000
+          1256.770833333333000000
           0.000000000000000000
           26.458333333333330000)
         XLColumn = 0
@@ -7945,47 +7945,14 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlTop
         FontSize = 6
       end
-      object qrdbtxtTOTAL: TQRDBText
-        Left = 664
-        Top = 1
-        Width = 56
-        Height = 15
-        Size.Values = (
-          39.687500000000000000
-          1756.833333333333000000
-          2.645833333333333000
-          148.166666666666700000)
-        XLColumn = 0
-        XLNumFormat = nfGeneral
-        ActiveInPreview = False
-        Alignment = taRightJustify
-        AlignToBand = False
-        Color = clWhite
-        DataSet = queryRelPedido
-        DataField = 'TOTALITENS'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -9
-        Font.Name = 'Arial'
-        Font.Style = []
-        Mask = '###,###,##0.00'
-        ParentFont = False
-        Transparent = False
-        ExportAs = exptText
-        WrapStyle = BreakOnSpaces
-        FullJustify = False
-        MaxBreakChars = 0
-        VerticalAlignment = tlTop
-        FontSize = 7
-      end
       object QRDBText1: TQRDBText
-        Left = 499
+        Left = 424
         Top = 0
         Width = 31
         Height = 11
         Size.Values = (
           29.104166666666670000
-          1320.270833333333000000
+          1121.833333333333000000
           0.000000000000000000
           82.020833333333330000)
         XLColumn = 0
@@ -8043,11 +8010,127 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         VerticalAlignment = tlTop
         FontSize = 6
       end
+      object QRDBText3: TQRDBText
+        Left = 510
+        Top = 0
+        Width = 10
+        Height = 11
+        Size.Values = (
+          29.104166666666670000
+          1349.375000000000000000
+          0.000000000000000000
+          26.458333333333330000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taRightJustify
+        AlignToBand = False
+        Color = clWhite
+        DataSet = queryRelPedido
+        DataField = 'P2'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -8
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FullJustify = False
+        MaxBreakChars = 0
+        VerticalAlignment = tlTop
+        FontSize = 6
+      end
+      object QRDBText4: TQRDBText
+        Left = 539
+        Top = 0
+        Width = 10
+        Height = 11
+        Size.Values = (
+          29.104166666666670000
+          1426.104166666667000000
+          0.000000000000000000
+          26.458333333333330000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taRightJustify
+        AlignToBand = False
+        Color = clWhite
+        DataSet = queryRelPedido
+        DataField = 'P3'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -8
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FullJustify = False
+        MaxBreakChars = 0
+        VerticalAlignment = tlTop
+        FontSize = 6
+      end
+      object QRDBText5: TQRDBText
+        Left = 562
+        Top = 1
+        Width = 48
+        Height = 11
+        Size.Values = (
+          29.104166666666670000
+          1486.958333333333000000
+          2.645833333333333000
+          127.000000000000000000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taRightJustify
+        AlignToBand = False
+        Color = clWhite
+        DataSet = queryRelPedido
+        DataField = 'TOTALDESC'
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FullJustify = False
+        MaxBreakChars = 0
+        VerticalAlignment = tlTop
+        FontSize = 6
+      end
+      object QRDBText6: TQRDBText
+        Left = 681
+        Top = 1
+        Width = 49
+        Height = 11
+        Size.Values = (
+          29.104166666666670000
+          1801.812500000000000000
+          2.645833333333333000
+          129.645833333333300000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taRightJustify
+        AlignToBand = False
+        Color = clWhite
+        DataSet = queryRelPedido
+        DataField = 'TOTALITENS'
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FullJustify = False
+        MaxBreakChars = 0
+        VerticalAlignment = tlTop
+        FontSize = 6
+      end
     end
     object QRBand3: TQRBand
       Left = 19
-      Top = 134
-      Width = 899
+      Top = 129
+      Width = 756
       Height = 245
       Frame.DrawBottom = True
       AlignToBottom = False
@@ -8056,7 +8139,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ForceNewPage = True
       Size.Values = (
         648.229166666666700000
-        2378.604166666667000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbTitle
@@ -8269,13 +8352,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrsysdt1: TQRSysData
         Left = 606
         Top = 30
-        Width = 114
+        Width = 66
         Height = 16
         Size.Values = (
           42.333333333333330000
           1603.375000000000000000
           79.375000000000000000
-          301.625000000000000000)
+          174.625000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -9199,13 +9282,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 10
       end
       object qrlbl23: TQRLabel
-        Left = 422
+        Left = 355
         Top = 222
         Width = 27
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1116.541666666667000000
+          939.270833333333300000
           587.375000000000000000
           71.437500000000000000)
         XLColumn = 0
@@ -9228,13 +9311,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 10
       end
       object qrlbl24: TQRLabel
-        Left = 454
+        Left = 387
         Top = 222
         Width = 34
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1201.208333333333000000
+          1023.937500000000000000
           587.375000000000000000
           89.958333333333330000)
         XLColumn = 0
@@ -9257,21 +9340,21 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 10
       end
       object qrlbl25: TQRLabel
-        Left = 491
+        Left = 424
         Top = 222
-        Width = 48
+        Width = 36
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1299.104166666667000000
+          1121.833333333333000000
           587.375000000000000000
-          127.000000000000000000)
+          95.250000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
         Alignment = taLeftJustify
         AlignToBand = False
-        Caption = 'Vr.Unit.'
+        Caption = 'Vr.Un'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -9286,21 +9369,21 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 10
       end
       object qrlbl26: TQRLabel
-        Left = 549
+        Left = 470
         Top = 222
-        Width = 24
+        Width = 27
         Height = 17
         Size.Values = (
           44.979166666666670000
-          1452.562500000000000000
+          1243.541666666667000000
           587.375000000000000000
-          63.500000000000000000)
+          71.437500000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
         Alignment = taLeftJustify
         AlignToBand = False
-        Caption = 'D.%'
+        Caption = 'D1%'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -9388,11 +9471,98 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         Shape = qrsRectangle
         VertAdjust = 0
       end
+      object QRLabel1: TQRLabel
+        Left = 504
+        Top = 222
+        Width = 27
+        Height = 17
+        Size.Values = (
+          44.979166666666670000
+          1333.500000000000000000
+          587.375000000000000000
+          71.437500000000000000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taLeftJustify
+        AlignToBand = False
+        Caption = 'D2%'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        VerticalAlignment = tlCenter
+        FontSize = 10
+      end
+      object QRLabel2: TQRLabel
+        Left = 537
+        Top = 222
+        Width = 27
+        Height = 17
+        Size.Values = (
+          44.979166666666670000
+          1420.812500000000000000
+          587.375000000000000000
+          71.437500000000000000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taLeftJustify
+        AlignToBand = False
+        Caption = 'D3%'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        VerticalAlignment = tlCenter
+        FontSize = 10
+      end
+      object QRLabel3: TQRLabel
+        Left = 570
+        Top = 221
+        Width = 40
+        Height = 17
+        Size.Values = (
+          44.979166666666670000
+          1508.125000000000000000
+          584.729166666666700000
+          105.833333333333300000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taLeftJustify
+        AlignToBand = False
+        Caption = 'VDesc'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        VerticalAlignment = tlCenter
+        FontSize = 10
+      end
     end
     object QRBand4: TQRBand
       Left = 19
       Top = 397
-      Width = 899
+      Width = 756
       Height = 268
       Frame.DrawTop = True
       AlignToBottom = False
@@ -9401,24 +9571,24 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ForceNewPage = False
       Size.Values = (
         709.083333333333300000
-        2378.604166666667000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbSummary
       object qrlbl31: TQRLabel
-        Left = 509
-        Top = 6
+        Left = 530
+        Top = 25
         Width = 106
         Height = 20
         Size.Values = (
           52.916666666666670000
-          1346.729166666667000000
-          15.875000000000000000
+          1402.291666666667000000
+          66.145833333333330000
           280.458333333333300000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
-        Alignment = taLeftJustify
+        Alignment = taRightJustify
         AlignToBand = False
         Caption = 'Total do Pedido:'
         Color = clWhite
@@ -9435,13 +9605,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 10
       end
       object qrlblTipoDePedido: TQRLabel
-        Left = 304
+        Left = 205
         Top = 3
         Width = 87
         Height = 16
         Size.Values = (
           42.333333333333330000
-          804.333333333333300000
+          542.395833333333300000
           7.937500000000000000
           230.187500000000000000)
         XLColumn = 0
@@ -9464,13 +9634,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 9
       end
       object qrdbTIPOPEDIDO: TQRDBText
-        Left = 313
+        Left = 214
         Top = 25
         Width = 64
         Height = 19
         Size.Values = (
           50.270833333333330000
-          828.145833333333300000
+          566.208333333333300000
           66.145833333333330000
           169.333333333333300000)
         XLColumn = 0
@@ -9523,15 +9693,15 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 9
       end
       object qrdbtotalbruto: TQRDBText
-        Left = 635
-        Top = 6
-        Width = 89
+        Left = 640
+        Top = 25
+        Width = 90
         Height = 18
         Size.Values = (
           47.625000000000000000
-          1680.104166666667000000
-          15.875000000000000000
-          235.479166666666700000)
+          1693.333333333333000000
+          66.145833333333330000
+          238.125000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -9544,8 +9714,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        Mask = '###,###,##0.00'
+        Font.Style = [fsBold, fsItalic]
         ParentFont = False
         Transparent = False
         ExportAs = exptText
@@ -9557,14 +9726,19 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       end
       object QRDBRichText1: TQRDBRichText
         AlignWithMargins = True
-        Left = 9
-        Top = 57
+        Left = 8
+        Top = 53
         Width = 878
         Height = 199
+        Frame.DrawTop = True
+        Frame.DrawBottom = True
+        Frame.DrawLeft = True
+        Frame.DrawRight = True
+        Frame.Style = psDot
         Size.Values = (
           526.520833333333300000
-          23.812500000000000000
-          150.812500000000000000
+          21.166666666666670000
+          140.229166666666700000
           2323.041666666667000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
@@ -9583,10 +9757,95 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         DataField = 'OBS'
         DataSet = queryRelPedido
       end
+      object QRLabel4: TQRLabel
+        Left = 8
+        Top = 31
+        Width = 70
+        Height = 16
+        Size.Values = (
+          42.333333333333330000
+          21.166666666666670000
+          82.020833333333330000
+          185.208333333333300000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taLeftJustify
+        AlignToBand = False
+        Caption = 'Observa'#231#227'o:'
+        Color = clWhite
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        VerticalAlignment = tlTop
+        FontSize = 9
+      end
+      object QRLabel5: TQRLabel
+        Left = 407
+        Top = 4
+        Width = 119
+        Height = 20
+        Size.Values = (
+          52.916666666666670000
+          1076.854166666667000000
+          10.583333333333330000
+          314.854166666666700000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taRightJustify
+        AlignToBand = False
+        Caption = 'Total de Desconto:'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        VerticalAlignment = tlTop
+        FontSize = 10
+      end
+      object QRDBText7: TQRDBText
+        Left = 447
+        Top = 4
+        Width = 163
+        Height = 18
+        Size.Values = (
+          47.625000000000000000
+          1182.687500000000000000
+          10.583333333333330000
+          431.270833333333300000)
+        XLColumn = 0
+        XLNumFormat = nfGeneral
+        ActiveInPreview = False
+        Alignment = taRightJustify
+        AlignToBand = False
+        Color = clWhite
+        DataSet = queryRelPedido
+        DataField = 'TOTALBRUTODESCONTO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsItalic]
+        ParentFont = False
+        Transparent = False
+        ExportAs = exptText
+        WrapStyle = BreakOnSpaces
+        FullJustify = False
+        MaxBreakChars = 0
+        VerticalAlignment = tlTop
+        FontSize = 10
+      end
     end
   end
   object queryRelPedido: TFDQuery
     Active = True
+    OnCalcFields = queryRelPedidoCalcFields
     MasterFields = 'PedidoId'
     DetailFields = 'NUM_PEDIDO'
     Connection = DMRaito.FDConnection1
@@ -9598,20 +9857,24 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       'Select A.PedidoId, A.DATA_PEDIDO, A.Cliente, A.REPRESENTADA,'
       
         'A.TRANSPORTADORA, A.CondicoesPagto, A.OBS, A.LEMBRETE, A.TIPOPED' +
-        'IDO, A.TOTALBRUTO,'
-      
-        'B.Cod_Produto, B.Des_Produto, B.GRUPO, B.UN, B.VRUNIT, B.QTD,  -' +
-        '- B.VRDESC,'
+        'IDO, A.TOTALBRUTO, A.TOTALBRUTODESCONTO,'
+      'B.Cod_Produto, B.Des_Produto, B.GRUPO, B.UN, B.VRUNIT, B.QTD,'
       'B.P1, B.P2, B.P3, B.ICMS,'
       'C.bairro, '
       
         'C.endereco, C.cidade, C.estado, C.cep, C.emailnfe, C.inscestadua' +
         'l, C.email, C.emailnfe, C.cnpj,'
-      '((B.VRUNIT * B.P1) / 100 * B.QTD) AS LIQ1, -- valor desconto'
-      '-- (B.QTD * B.VRUNIT) AS TOTAL,'
+      '((B.VRUNIT * B.P1) / 100 * B.QTD) AS LIQ1,'
+      '((B.VRUNIT * B.P2) / 100 * B.QTD) AS LIQ2, '
+      '((B.VRUNIT * B.P3) / 100 * B.QTD) AS LIQ3,'
+      ''
       
-        '((B.QTD * B.VRUNIT) - (B.VRUNIT * B.P1) / 100 * B.QTD) AS TOTALI' +
-        'TENS'
+        '(((B.VRUNIT * B.P1) / 100 * B.QTD) + ((B.VRUNIT * B.P2) / 100 * ' +
+        'B.QTD) + ((B.VRUNIT * B.P3) / 100 * B.QTD)) AS TOTALDESC,'
+      
+        '((B.QTD * B.VRUNIT) - (((B.VRUNIT * B.P1) / 100 * B.QTD) + ((B.V' +
+        'RUNIT * B.P2) / 100 * B.QTD) + ((B.VRUNIT * B.P3) / 100 * B.QTD)' +
+        ')) AS TOTALITENS'
       'From PEDIDOS A'
       'join ITENS B on B.pedidos_PedidoId = A.PedidoId'
       
@@ -9623,10 +9886,9 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     ParamData = <
       item
         Name = 'PEDIDOID'
-        ArrayType = atArray
-        ArraySize = 2
         DataType = ftInteger
         ParamType = ptInput
+        Value = Null
       end>
     object queryRelPedidoPedidoId: TFDAutoIncField
       FieldName = 'PedidoId'
@@ -9686,6 +9948,8 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       AutoGenerateValue = arDefault
       FieldName = 'TOTALBRUTO'
       Origin = 'totalbruto'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
       currency = True
     end
     object queryRelPedidoCod_Produto: TStringField
@@ -9741,6 +10005,8 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       Origin = 'p1'
       ProviderFlags = []
       ReadOnly = True
+      DisplayFormat = '###"%"'
+      EditFormat = '###"%"'
     end
     object queryRelPedidoP2: TFloatField
       AutoGenerateValue = arDefault
@@ -9748,6 +10014,8 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       Origin = 'p2'
       ProviderFlags = []
       ReadOnly = True
+      DisplayFormat = '###"%"'
+      EditFormat = '###"%"'
     end
     object queryRelPedidoP3: TFloatField
       AutoGenerateValue = arDefault
@@ -9755,6 +10023,8 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       Origin = 'p3'
       ProviderFlags = []
       ReadOnly = True
+      DisplayFormat = '###"%"'
+      EditFormat = '###"%"'
     end
     object queryRelPedidobairro: TStringField
       AutoGenerateValue = arDefault
@@ -9835,21 +10105,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ReadOnly = True
       Size = 25
     end
-    object queryRelPedidoLIQ1: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'LIQ1'
-      Origin = 'LIQ1'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object queryRelPedidoTOTALITENS: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'TOTALITENS'
-      Origin = 'TOTALITENS'
-      ProviderFlags = []
-      ReadOnly = True
-      currency = True
-    end
     object queryRelPedidoICMS: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'ICMS'
@@ -9857,6 +10112,45 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ProviderFlags = []
       ReadOnly = True
       Size = 2
+    end
+    object queryRelPedidoLIQ1: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'LIQ1'
+      Calculated = True
+    end
+    object queryRelPedidoLIQ2: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'LIQ2'
+      Calculated = True
+    end
+    object queryRelPedidoLIQ3: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'LIQ3'
+      Calculated = True
+    end
+    object queryRelPedidoTOTALDESC: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTALDESC'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
+      currency = True
+      Calculated = True
+    end
+    object queryRelPedidoTOTALITENS: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTALITENS'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
+      currency = True
+      Calculated = True
+    end
+    object queryRelPedidoTOTALBRUTODESCONTO: TSingleField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'TOTALESCONTO'
+      FieldName = 'TOTALBRUTODESCONTO'
+      Origin = 'totalbrutodesconto'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
     end
   end
 end

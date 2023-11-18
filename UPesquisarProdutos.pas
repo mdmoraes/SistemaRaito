@@ -2,13 +2,13 @@ unit UPesquisarProdutos;
 interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Grids, DBGrids, ExtCtrls, Data.DB;
+  Dialogs, StdCtrls, Buttons, Grids, DBGrids, ExtCtrls, Data.DB, JvExDBGrids,
+  JvDBGrid;
 type
   TFrmPesquisarProdutos = class(TForm)
     grp1: TGroupBox;
     edt1: TEdit;
     pnl1: TPanel;
-    dbgrd1: TDBGrid;
     btnFechar: TBitBtn;
     grp2: TGroupBox;
     rbCodigo: TRadioButton;
@@ -18,6 +18,8 @@ type
     rb18: TRadioButton;
     rb12: TRadioButton;
     rb7: TRadioButton;
+    dbgrd1: TJvDBGrid;
+    btnCopiarItensSelecionados: TSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure rbCodigoClick(Sender: TObject);
@@ -26,6 +28,7 @@ type
     procedure dbgrd1Enter(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
     procedure dbgrd1DblClick(Sender: TObject);
+    procedure btnCopiarItensSelecionadosClick(Sender: TObject);
   private
     procedure CopiarProdutos;
     { Private declarations }
@@ -37,10 +40,58 @@ var
 implementation
 uses UDMRaito, UPedido;
 {$R *.dfm}
+
 procedure TFrmPesquisarProdutos.FormShow(Sender: TObject);
 begin
-  edt1.SetFocus;
+ // edt1.SetFocus;
 end;
+procedure TFrmPesquisarProdutos.btnCopiarItensSelecionadosClick(
+  Sender: TObject);
+var i :Integer;
+
+begin
+ if rb18.Checked = False or rb12.Checked = False or rb7.Checked = False then
+  begin
+    ShowMessage('É necessário escolher um ICMS !');
+    Abort;
+  end;
+
+
+
+  For i := 0 to dbgrd1.SelectedRows.Count -1 do
+  begin
+  { GoTo selected record: }
+  dbgrd1.datasource.dataset.Bookmark := dbgrd1.SelectedRows.Items[i];
+  { Do something with i-th selected record }
+
+      DMRaito.FdTableItens.Edit;
+      DMRaito.FdTableItens.Append;
+
+      frmPedido.dbgrdItens.Columns.Items[2].Field.Text := dbgrd1.Columns.Items[0].Field.Text;
+      frmPedido.dbgrdItens.Columns.Items[3].Field.Text := dbgrd1.Columns.Items[1].Field.Text;
+      frmPedido.dbgrdItens.Columns.Items[4].Field.Text := dbgrd1.Columns.Items[2].Field.Text;
+      frmPedido.dbgrdItens.Columns.Items[5].Field.Text := dbgrd1.Columns.Items[3].Field.Text;
+     //testar a escolha do ICMS
+          if rb18.Checked = true then
+          begin
+          frmPedido.dbgrdItens.Columns.Items[13].Field.Text := '18';
+          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := dbgrd1.Columns.Items[5].Field.Text;
+          end;
+          if rb12.Checked = true then
+          begin
+          frmPedido.dbgrdItens.Columns.Items[13].Field.Text := '12';
+          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := dbgrd1.Columns.Items[5].Field.Text;
+          end;
+          if rb7.Checked = true then
+          begin
+          frmPedido.dbgrdItens.Columns.Items[13].Field.Text := '7';
+          frmPedido.dbgrdItens.Columns.Items[7].Field.Text := dbgrd1.Columns.Items[5].Field.Text;
+          end;
+         // frmPedido.dbgrdItens.SelectedIndex := 6;
+         btnFechar.Click;
+  end;
+end;
+
 procedure TFrmPesquisarProdutos.btnFecharClick(Sender: TObject);
 begin
     close;
@@ -63,6 +114,7 @@ procedure TFrmPesquisarProdutos.dbgrd1DblClick(Sender: TObject);
 begin
 CopiarProdutos();
 end;
+
 procedure TFrmPesquisarProdutos.CopiarProdutos;
 begin
   if rb18.Checked = False or rb12.Checked = False or rb7.Checked = False then

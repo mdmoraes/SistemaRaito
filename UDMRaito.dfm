@@ -827,6 +827,13 @@ object DMRaito: TDMRaito
       Origin = 'cadastroclientes_idcliente'
       Required = True
     end
+    object FdTablePedidostotalbrutodesconto: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'totalbrutodesconto'
+      Origin = 'totalbrutodesconto'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
+    end
     object FdTablePedidosvrcomissao: TFloatField
       FieldKind = fkCalculated
       FieldName = 'vrcomissao'
@@ -954,28 +961,28 @@ object DMRaito: TDMRaito
       currency = True
       Calculated = True
     end
-    object FdTableItensTotalDesc: TFloatField
-      Alignment = taLeftJustify
-      FieldKind = fkCalculated
-      FieldName = 'TotalDesc'
-      DisplayFormat = 'R$  #,##0.00'
-      EditFormat = 'R$  #,##0.00'
-      currency = True
-      Calculated = True
-    end
     object FdTableItensicms: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'icms'
       Origin = 'icms'
       Size = 2
     end
-    object FdTableItensTotalItens: TFloatField
-      Alignment = taLeftJustify
+    object FdTableItensTotalDesc: TSingleField
+      AutoGenerateValue = arDefault
       FieldKind = fkCalculated
-      FieldName = 'TotalItens'
+      FieldName = 'TotalDesc'
+      Origin = 'TotalDesc'
       DisplayFormat = 'R$ #,##0.00'
       EditFormat = 'R$ #,##0.00'
-      currency = True
+      Calculated = True
+    end
+    object FdTableItensTotalItens: TSingleField
+      AutoGenerateValue = arDefault
+      FieldKind = fkCalculated
+      FieldName = 'TotalItens'
+      Origin = 'TotalItens'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
       Calculated = True
     end
   end

@@ -128,7 +128,6 @@ type
     FdTableItensp2: TFloatField;
     FdTableItensp3: TFloatField;
     FdTableItenspedidos_PedidoId: TIntegerField;
-    FdTableItensTotalItens: TFloatField;
     FdTablePedidosPedidoId: TFDAutoIncField;
     FdTablePedidosdata_pedido: TDateField;
     FdTablePedidosrepresentada: TStringField;
@@ -176,7 +175,9 @@ type
     FdTablePedidosvrcomissao: TFloatField;
     FdTableItensliq2: TFloatField;
     FdTableItensliq3: TFloatField;
-    FdTableItensTotalDesc: TFloatField;
+    FdTableItensTotalDesc: TSingleField;
+    FdTableItensTotalItens: TSingleField;
+    FdTablePedidostotalbrutodesconto: TSingleField;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
@@ -207,7 +208,7 @@ begin
 end;
 procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
 var
-total, totalBruto: Double;
+totaldesconto, totalgeraldesconto, total, totalBruto: Double;
   begin
 //   if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
 //     begin
@@ -216,7 +217,7 @@ total, totalBruto: Double;
 //     end;
 
 
-
+      // calculo do total do pedido
       DMRaito.FdTableItens.DisableControls;
       DMRaito.FdTableItens.First;
       total:= 0;
@@ -227,11 +228,28 @@ total, totalBruto: Double;
       DMRaito.FdTableItens.Next;
 
       end;
-     // DMRaito.FdTableItens.Edit;
       DMRaito.FdTablePedidos.Edit;
       DMRaito.FdTablePedidosTotalBruto.Value:= total;
       DMRaito.FdTablePedidos.Post;
       DMRaito.FdTableItens.EnableControls;
+
+      // calculo do totalgeral de descontos do pedido
+      DMRaito.FdTableItens.DisableControls;
+      DMRaito.FdTableItens.First;
+      totaldesconto:= 0;
+      totalgeraldesconto:= 0;
+      while not DMRaito.FdTableItens.Eof do
+      begin
+      totaldesconto:= totaldesconto + DMRaito.FdTableItensTotalDesc.Value;
+      DMRaito.FdTableItens.Next;
+
+      end;
+      DMRaito.FdTablePedidos.Edit;
+      DMRaito.FdTablePedidostotalbrutodesconto.Value:= totaldesconto;
+      DMRaito.FdTablePedidos.Post;
+      DMRaito.FdTableItens.EnableControls;
+
+
 
 
 
@@ -247,6 +265,7 @@ end;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
+//DMRaito.FdTableItens.Edit;
 //cálculo liq1
 DMRaito.FdTableItensliq1.Value:=
 ((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp1.Value) /100) * DMRaito.FdTableItensqtd.Value;

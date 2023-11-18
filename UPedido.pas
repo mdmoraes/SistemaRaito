@@ -51,6 +51,9 @@ type
     SpeedButton1: TSpeedButton;
     DBEditIdCliente: TDBEdit;
     edtObs: TJvDBRichEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);

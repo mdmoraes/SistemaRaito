@@ -1,7 +1,5 @@
 unit URelatorioPedido;
-
 interface
-
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, QuickRpt, qrpBaseCtrls,
@@ -9,7 +7,6 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.DBCtrls;
-
 type
   TfrmRelatorioPedido = class(TForm)
     QRPQuickrep1: TQRPQuickrep;
@@ -52,7 +49,6 @@ type
     qrdbtxtQTD: TQRDBText;
     qrdbtxtVALORUNIT: TQRDBText;
     qrdbtxtPERCENTUAL1: TQRDBText;
-    qrdbtxtTOTAL: TQRDBText;
     qrlbl20: TQRLabel;
     qrlbl21: TQRLabel;
     qrlbl23: TQRLabel;
@@ -99,23 +95,70 @@ type
     queryRelPedidoemail: TStringField;
     queryRelPedidoemailnfe_1: TStringField;
     queryRelPedidocnpj: TStringField;
-    queryRelPedidoLIQ1: TFloatField;
-    queryRelPedidoTOTALITENS: TFloatField;
     queryRelPedidoICMS: TStringField;
     QRDBRichText1: TQRDBRichText;
+    QRLabel1: TQRLabel;
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    queryRelPedidoLIQ2: TFloatField;
+    queryRelPedidoLIQ3: TFloatField;
+    queryRelPedidoLIQ1: TFloatField;
+    QRDBText3: TQRDBText;
+    QRDBText4: TQRDBText;
+    QRDBText5: TQRDBText;
+    QRDBText6: TQRDBText;
+    queryRelPedidoTOTALDESC: TFloatField;
+    queryRelPedidoTOTALITENS: TFloatField;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRDBText7: TQRDBText;
+    queryRelPedidoTOTALBRUTODESCONTO: TSingleField;
+    procedure queryRelPedidoCalcFields(DataSet: TDataSet);
+
   private
     { Private declarations }
   public
     { Public declarations }
   end;
-
 var
   frmRelatorioPedido: TfrmRelatorioPedido;
-
 implementation
-
 uses UDMRaito, UPedido;
-
 {$R *.dfm}
+
+
+
+
+
+procedure TfrmRelatorioPedido.queryRelPedidoCalcFields(DataSet: TDataSet);
+begin
+
+ DMRaito.FdTableItens.Open();
+ DMRaito.FdTableItens.Edit;
+
+//cálculo liq1
+queryRelPedidoLIQ1.Value:=
+((queryRelPedidoVRUNIT.Value * queryRelPedidoP1.Value) /100) * queryRelPedidoQTD.Value;
+
+//cálculo liq2
+queryRelPedidoLIQ2.Value:=
+((queryRelPedidoVRUNIT.Value * queryRelPedidoP2.Value) /100) * queryRelPedidoQTD.Value;
+
+//cálculo liq3
+queryRelPedidoLIQ3.Value:=
+((queryRelPedidoVRUNIT.Value * queryRelPedidoP3.Value) /100) * queryRelPedidoQTD.Value;
+
+//cálculo TotalDesc
+queryRelPedidoTOTALDESC.Value:=
+(queryRelPedidoLIQ1.Value + queryRelPedidoLIQ2.Value + queryRelPedidoLIQ3.Value);
+
+
+//cálculo TotalItens
+queryRelPedidoTOTALITENS.Value :=
+((queryRelPedidoVRUNIT.Value * queryRelPedidoQTD.Value) - queryRelPedidoTOTALDESC.Value);
+
+
+
+end;
 
 end.

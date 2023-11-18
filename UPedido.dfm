@@ -15,12 +15,26 @@ object frmPedido: TfrmPedido
   OnShow = FormShow
   TextHeight = 15
   object lbl8: TLabel
-    Left = 1057
-    Top = 608
-    Width = 102
+    Left = 1072
+    Top = 601
+    Width = 107
     Height = 17
     Caption = 'Total do Pedido:'
     FocusControl = dbedttotaldopedido
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 921
+    Top = 601
+    Width = 116
+    Height = 17
+    Caption = 'Total de Desconto:'
+    FocusControl = DBEdit1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -123,9 +137,9 @@ object frmPedido: TfrmPedido
     end
   end
   object panelNav: TPanel
-    Left = 48
+    Left = 16
     Top = 615
-    Width = 873
+    Width = 796
     Height = 33
     TabOrder = 0
     object btnNovo: TSpeedButton
@@ -220,7 +234,7 @@ object frmPedido: TfrmPedido
       OnClick = btnPesquisaClick
     end
     object btnImprimir: TSpeedButton
-      Left = 584
+      Left = 541
       Top = 5
       Width = 97
       Height = 20
@@ -245,7 +259,7 @@ object frmPedido: TfrmPedido
       OnClick = btnImprimirClick
     end
     object btn1: TBitBtn
-      Left = 760
+      Left = 696
       Top = 3
       Width = 87
       Height = 23
@@ -295,7 +309,7 @@ object frmPedido: TfrmPedido
     Left = 8
     Top = 14
     Width = 1272
-    Height = 593
+    Height = 575
     Enabled = False
     TabOrder = 2
     object lbl: TLabel
@@ -463,6 +477,13 @@ object frmPedido: TfrmPedido
       ParentShowHint = False
       ShowHint = True
       OnClick = SpeedButton1Click
+    end
+    object Label1: TLabel
+      Left = 358
+      Top = 152
+      Width = 62
+      Height = 15
+      Caption = 'Observa'#231#227'o'
     end
     object dbedtnum_pedido: TDBEdit
       Left = 10
@@ -730,7 +751,6 @@ object frmPedido: TfrmPedido
           Visible = True
         end
         item
-          Alignment = taRightJustify
           Expanded = False
           FieldName = 'TotalDesc'
           ReadOnly = True
@@ -768,7 +788,6 @@ object frmPedido: TfrmPedido
           Visible = True
         end
         item
-          Alignment = taRightJustify
           Expanded = False
           FieldName = 'TotalItens'
           Font.Charset = DEFAULT_CHARSET
@@ -809,10 +828,10 @@ object frmPedido: TfrmPedido
       Visible = False
     end
     object edtObs: TJvDBRichEdit
-      Left = 401
-      Top = 192
+      Left = 358
+      Top = 170
       Width = 672
-      Height = 97
+      Height = 144
       DataField = 'obs'
       DataSource = DMRaito.dsPedidos
       Font.Charset = ANSI_CHARSET
@@ -828,12 +847,31 @@ object frmPedido: TfrmPedido
     end
   end
   object dbedttotaldopedido: TDBEdit
-    Left = 1057
-    Top = 626
-    Width = 167
-    Height = 29
+    Left = 1065
+    Top = 618
+    Width = 138
+    Height = 27
     BiDiMode = bdRightToLeft
+    Color = clSkyBlue
     DataField = 'TOTALBRUTO'
+    DataSource = DMRaito.dsPedidos
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clMenuHighlight
+    Font.Height = -16
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentBiDiMode = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 3
+  end
+  object DBEdit1: TDBEdit
+    Left = 921
+    Top = 618
+    Width = 138
+    Height = 27
+    BiDiMode = bdRightToLeft
+    DataField = 'totalbrutodesconto'
     DataSource = DMRaito.dsPedidos
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clMenuHighlight
@@ -844,7 +882,7 @@ object frmPedido: TfrmPedido
     ParentColor = True
     ParentFont = False
     ReadOnly = True
-    TabOrder = 3
+    TabOrder = 4
   end
   object BalloonHint1: TBalloonHint
     Left = 1152
