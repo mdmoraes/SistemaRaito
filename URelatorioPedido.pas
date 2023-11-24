@@ -93,7 +93,6 @@ type
     queryRelPedidoemailnfe: TStringField;
     queryRelPedidoinscestadual: TStringField;
     queryRelPedidoemail: TStringField;
-    queryRelPedidoemailnfe_1: TStringField;
     queryRelPedidocnpj: TStringField;
     queryRelPedidoICMS: TStringField;
     QRDBRichText1: TQRDBRichText;

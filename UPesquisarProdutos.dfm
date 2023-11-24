@@ -85,7 +85,7 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
       Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+      Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -93,6 +93,7 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      SortMarker = smDown
       MultiSelect = True
       AlternateRowColor = clMoneyGreen
       SelectColumnsDialogStrings.Caption = 'Select columns'

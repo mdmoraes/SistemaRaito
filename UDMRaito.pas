@@ -178,6 +178,8 @@ type
     FdTableItensTotalDesc: TSingleField;
     FdTableItensTotalItens: TSingleField;
     FdTablePedidostotalbrutodesconto: TSingleField;
+    FdTbImportacaomarcado: TStringField;
+    FDTransaction1: TFDTransaction;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
@@ -185,6 +187,8 @@ type
     procedure FdTablePedidosCalcFields(DataSet: TDataSet);
     procedure FdTablePedidosNewRecord(DataSet: TDataSet);
     procedure FdTableItensBeforePost(DataSet: TDataSet);
+    procedure FdTbImportacaomarcadoGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Private declarations }
   public
@@ -212,7 +216,7 @@ totaldesconto, totalgeraldesconto, total, totalBruto: Double;
   begin
 //   if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
 //     begin
-//      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório, verifique. !');
+//      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório. !');
 //      Abort;
 //     end;
 
@@ -310,6 +314,12 @@ begin
 //Após, abra sua tabela, dê um Refresh e digite o seguinte:
 //DMRaito.FdTablePedidos:=cont_reg;
 
+end;
+
+procedure TDMRaito.FdTbImportacaomarcadoGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+Text := EmptyStr;
 end;
 
 end.

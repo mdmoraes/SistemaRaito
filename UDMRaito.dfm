@@ -8,8 +8,22 @@ object DMRaito: TDMRaito
       'Password=omegaone'
       'Server=127.0.0.1'
       'DriverID=MySQL')
+    FetchOptions.AssignedValues = [evMode, evRecordCountMode, evAutoFetchAll]
+    FetchOptions.Mode = fmAll
+    FetchOptions.RecordCountMode = cmTotal
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.UpdateMode = upWhereAll
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
     Connected = True
     LoginPrompt = False
+    Transaction = FDTransaction1
     Left = 496
     Top = 120
   end
@@ -234,6 +248,10 @@ object DMRaito: TDMRaito
   end
   object FdTbImportacao: TFDTable
     Active = True
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
     CachedUpdates = True
     DetailFields = 'codigo;descricao;grupo'
     Connection = FDConnection1
@@ -247,6 +265,13 @@ object DMRaito: TDMRaito
     TableName = 'dbratio.tbimportacao'
     Left = 32
     Top = 192
+    object FdTbImportacaomarcado: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'marcado'
+      Origin = 'marcado'
+      OnGetText = FdTbImportacaomarcadoGetText
+      Size = 2
+    end
     object FdTbImportacaocodigo: TStringField
       DisplayWidth = 16
       FieldName = 'codigo'
@@ -1075,5 +1100,10 @@ object DMRaito: TDMRaito
     DataSet = FDTableTabelaFixa
     Left = 600
     Top = 16
+  end
+  object FDTransaction1: TFDTransaction
+    Connection = FDConnection1
+    Left = 616
+    Top = 112
   end
 end

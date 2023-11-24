@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BFDE81A0-7FE1-4DD6-B0D3-A36F5645C86C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Raito.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\DbgridModernoAvancado-main\DbgridModernoAvancado.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Raito">
+        <MSBuild Projects="Raito.dproj"/>
+    </Target>
+    <Target Name="Raito:Clean">
+        <MSBuild Projects="Raito.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Raito:Make">
+        <MSBuild Projects="Raito.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DbgridModernoAvancado">
+        <MSBuild Projects="..\DbgridModernoAvancado-main\DbgridModernoAvancado.dproj"/>
+    </Target>
+    <Target Name="DbgridModernoAvancado:Clean">
+        <MSBuild Projects="..\DbgridModernoAvancado-main\DbgridModernoAvancado.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DbgridModernoAvancado:Make">
+        <MSBuild Projects="..\DbgridModernoAvancado-main\DbgridModernoAvancado.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Raito;DbgridModernoAvancado"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Raito:Clean;DbgridModernoAvancado:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Raito:Make;DbgridModernoAvancado:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

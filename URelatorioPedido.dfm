@@ -8129,7 +8129,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
     object QRBand3: TQRBand
       Left = 19
-      Top = 129
+      Top = 134
       Width = 756
       Height = 245
       Frame.DrawBottom = True
@@ -9862,8 +9862,8 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       'B.P1, B.P2, B.P3, B.ICMS,'
       'C.bairro, '
       
-        'C.endereco, C.cidade, C.estado, C.cep, C.emailnfe, C.inscestadua' +
-        'l, C.email, C.emailnfe, C.cnpj,'
+        'C.endereco, C.cidade, C.estado, C.cep, C.inscestadual, C.email, ' +
+        'C.emailnfe, C.cnpj,'
       '((B.VRUNIT * B.P1) / 100 * B.QTD) AS LIQ1,'
       '((B.VRUNIT * B.P2) / 100 * B.QTD) AS LIQ2, '
       '((B.VRUNIT * B.P3) / 100 * B.QTD) AS LIQ3,'
@@ -10085,14 +10085,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       AutoGenerateValue = arDefault
       FieldName = 'email'
       Origin = 'email'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 50
-    end
-    object queryRelPedidoemailnfe_1: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'emailnfe_1'
-      Origin = 'emailnfe'
       ProviderFlags = []
       ReadOnly = True
       Size = 50

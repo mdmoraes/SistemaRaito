@@ -114,6 +114,7 @@ begin
     ShowMessage('Registro excluído com sucesso!');
   end;
 end;
+
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
 var cont_reg:integer;
 begin
@@ -124,14 +125,39 @@ begin
     begin
     ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
     Abort
-    end else
-    //verifica o campo qtd.
+    end;
 
-   if (dbgrdItens.Columns.Items[6].Field.Text < '1') then
-   begin
-   ShowMessage('Preencimento da quantidade é obrigatório, igual ou maior que 1');
-   Abort;
-   end else
+    //verifica se o campo qtd foi preenchido.
+
+//    dbgrdItens.DataSource.DataSet.DisableControls;
+//    dbgrdItens.DataSource.DataSet.First;
+//    while not dbgrdItens.DataSource.DataSet.EOF do
+//    begin
+//    if dbgrdItens.Columns.Items[6].Field.text = '' then
+//    ShowMessage('Campo quantidade deve ser preenchido!');
+//    dbgrdItens.DataSource.DataSet.Next
+//    end;
+//    dbgrdItens.DataSource.DataSet.EnableControls;
+
+//   if (dbgrdItens.Columns.Items[6].Field.Text < '1') then
+//   begin
+//   ShowMessage('Preencimento da quantidade é obrigatório, igual ou maior que 1');
+//   Abort;
+//   end else
+
+//DMRaito.FDConnection1.StartTransaction;
+//try
+// DMRaito.FdTablePedidos.Post;
+// DMRaito.FdTableItens.Post;
+// ShowMessage('Registro gravado com sucesso.!');
+//  panelConfirma.Enabled:= False;
+//  panelNav.Visible:= True;
+//  panelTela.Enabled:= False;
+// DMRaito.FDConnection1.Commit;
+//except
+//DMRaito.FDConnection1.Rollback;
+//  raise;
+//end;
 
     begin
     DMRaito.FdTablePedidos.Post;
@@ -140,21 +166,23 @@ begin
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
-    end;
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-    DMRaito.FdTablePedidos.CachedUpdates:= True;
-    DMRaito.FdTableItens.CachedUpdates:= True;
+    end;
 
   //  if DMRaito.FdTablePedidos.State in [dsInsert] then
- //   begin
+    begin
       DMRaito.FdTablePedidos.IndexName:= 'idxPedidoId';
       DMRaito.FdTablePedidos.First;
       DMRaito.FdTablePedidos.Last;
-  //    DMRaito.FdTablePedidos.Locate('PedidoId', dbedtnum_pedido.text,[]);
- //   end;
-   //   DMRaito.FdTablePedidos.Locate('PedidoId', dbedtnum_pedido.text,[]);
+    end; // else
+
+//    if DMRaito.FdTablePedidos.State in [dsEdit] then
+//    begin
+//    DMRaito.FdTablePedidos.Locate('PedidoId', dbedtnum_pedido.text,[]);
+//    end;
 
 end;
+
 procedure TfrmPedido.btnImprimirClick(Sender: TObject);
 //gerar o relatório de pedido no QUICK REPORT
 begin
@@ -180,24 +208,46 @@ begin
       end;
 end;
 procedure TfrmPedido.btnNovoClick(Sender: TObject);
+var
+it:integer;
 begin
   panelConfirma.Enabled:= True;
   panelNav.Visible:= False;
   panelTela.Enabled:= True;
   DMRaito.FdTablePedidos.Edit;
-//  Try
-//  DMRaito.FDConnection1.StartTransaction;
+//
   DMRaito.FdTablePedidos.Append;
   DMRaito.FdTablePedidos['data_pedido']:= DateToStr(Now);
   DBEditCliente.SetFocus;
-//  DMRaito.FdTablePedidos.Post;
-//  DMRaito.FDConnection1.Commit;
-//  Except
-//  DMRaito.FDConnection1.Rollback;
-//  End;
 
+
+//   try      //EVENTO ACUMULADOR DE REGISTROS ...MAMO...
+//          DMRaito.FdTablePedidos.DisableControls;
+//          try
+//          DMRaito.FdTablePedidos.IndexName:= 'idxPedidoId';
+//          DMRaito.FdTablePedidos.First;
+//          DMRaito.FdTablePedidos.Last;
+//
+//          if DMRaito.FdTablePedidos['PedidoId']<> null then
+//          it := DMRaito.FdTablePedidos['PedidoId']
+//          else
+//          it:= 0;
+//          DMRaito.FdTablePedidos.Append;
+//          DMRaito.FdTablePedidos['PedidoId'] := it + 1;
+//          DMRaito.FdTablePedidos['data_pedido']:= DateToStr(Now);
+//
+//          //DMRaito.FdTablePedidos.Post;
+//         // DMRaito.FdTablePedidos.ApplyUpdates(0);
+//
+//          DBEditCliente.SetFocus;
+//          finally
+//          DMRaito.FdTablePedidos.EnableControls;
+//          end;
+//   finally
+//   end;
 
 end;
+
 procedure TfrmPedido.btnNovoClienteClick(Sender: TObject);
 begin
  try
