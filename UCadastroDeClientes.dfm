@@ -308,8 +308,8 @@ object frmCadastroClientes: TfrmCadastroClientes
       FocusControl = dbedtbairro
     end
     object lbl5: TLabel
-      Left = 491
-      Top = 8
+      Left = 713
+      Top = 56
       Width = 48
       Height = 17
       Caption = 'idcliente'
@@ -379,6 +379,14 @@ object frmCadastroClientes: TfrmCadastroClientes
       Caption = 'cpf'
       FocusControl = DBEditcpf
     end
+    object Label2: TLabel
+      Left = 471
+      Top = 9
+      Width = 91
+      Height = 17
+      Caption = 'Transportadora'
+      FocusControl = DBEdit1
+    end
     object dbedtnomecliente: TDBEdit
       Left = 8
       Top = 24
@@ -428,8 +436,8 @@ object frmCadastroClientes: TfrmCadastroClientes
       TabOrder = 4
     end
     object dbedtidcliente: TDBEdit
-      Left = 491
-      Top = 24
+      Left = 713
+      Top = 72
       Width = 48
       Height = 25
       DataField = 'idcliente'
@@ -554,6 +562,15 @@ object frmCadastroClientes: TfrmCadastroClientes
       MaxLength = 14
       TabOrder = 12
       OnExit = DBEditcpfExit
+    end
+    object DBEdit1: TDBEdit
+      Left = 471
+      Top = 25
+      Width = 528
+      Height = 25
+      DataField = 'transportadora'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 13
     end
   end
 end

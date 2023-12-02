@@ -17,7 +17,7 @@ object frmPedido: TfrmPedido
   object lbl8: TLabel
     Left = 1072
     Top = 601
-    Width = 107
+    Width = 102
     Height = 17
     Caption = 'Total do Pedido:'
     FocusControl = dbedttotaldopedido
@@ -428,6 +428,7 @@ object frmPedido: TfrmPedido
       NumGlyphs = 2
       ParentShowHint = False
       ShowHint = True
+      OnClick = btnNovaTransportadoraClick
     end
     object lbl9: TLabel
       Left = 9
@@ -570,22 +571,6 @@ object frmPedido: TfrmPedido
       TabOrder = 6
       OnClick = lokupclienteClick
     end
-    object lokuprepresentada: TDBLookupComboBox
-      Left = 63
-      Top = 123
-      Width = 466
-      Height = 21
-      Ctl3D = False
-      DataField = 'transportadora'
-      DataSource = DMRaito.dsPedidos
-      DropDownRows = 10
-      KeyField = 'NomeTransportadora'
-      ListField = 'NomeTransportadora'
-      ListSource = DMRaito.dsTableTransportadora
-      ParentCtl3D = False
-      TabOrder = 7
-      OnClick = lokupclienteClick
-    end
     object dbgrdItens: TDBGrid
       Left = 0
       Top = 320
@@ -602,7 +587,7 @@ object frmPedido: TfrmPedido
       Font.Style = []
       Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
@@ -814,7 +799,8 @@ object frmPedido: TfrmPedido
       Height = 23
       DataField = 'cliente'
       DataSource = DMRaito.dsPedidos
-      TabOrder = 9
+      ReadOnly = True
+      TabOrder = 8
       OnExit = DBEditClienteExit
     end
     object DBEditIdCliente: TDBEdit
@@ -824,7 +810,7 @@ object frmPedido: TfrmPedido
       Height = 23
       DataField = 'cadastroclientes_idcliente'
       DataSource = DMRaito.dsPedidos
-      TabOrder = 10
+      TabOrder = 9
       Visible = False
     end
     object edtObs: TJvDBRichEdit
@@ -841,16 +827,26 @@ object frmPedido: TfrmPedido
       Font.Style = []
       ParentFont = False
       PlainText = True
-      TabOrder = 11
+      TabOrder = 10
       UndoLimit = 800
       WantTabs = True
+    end
+    object edTransportadora: TDBEdit
+      Left = 64
+      Top = 122
+      Width = 465
+      Height = 23
+      DataField = 'transportadora'
+      DataSource = DMRaito.dsPedidos
+      ReadOnly = True
+      TabOrder = 11
     end
   end
   object dbedttotaldopedido: TDBEdit
     Left = 1065
     Top = 618
     Width = 138
-    Height = 27
+    Height = 29
     BiDiMode = bdRightToLeft
     Color = clSkyBlue
     DataField = 'TOTALBRUTO'
@@ -869,7 +865,7 @@ object frmPedido: TfrmPedido
     Left = 921
     Top = 618
     Width = 138
-    Height = 27
+    Height = 29
     BiDiMode = bdRightToLeft
     DataField = 'totalbrutodesconto'
     DataSource = DMRaito.dsPedidos

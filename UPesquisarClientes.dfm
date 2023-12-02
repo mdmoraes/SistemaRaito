@@ -4,7 +4,7 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
   BorderStyle = bsNone
   Caption = 'Pesquisar Clientes'
   ClientHeight = 412
-  ClientWidth = 482
+  ClientWidth = 774
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -39,18 +39,15 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
   object pnl1: TPanel
     Left = 3
     Top = 59
-    Width = 479
+    Width = 750
     Height = 296
     TabOrder = 1
-    object dbgrd1: TDBGrid
-      Left = 5
-      Top = 6
-      Width = 467
-      Height = 282
+    object dbgrd1: TJvDBGrid
+      Left = 6
+      Top = 8
+      Width = 731
+      Height = 273
       DataSource = DMRaito.dsCliente
-      GradientEndColor = clBlack
-      GradientStartColor = clSilver
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -59,22 +56,46 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
       OnDblClick = dbgrd1DblClick
+      AlternateRowColor = clGradientActiveCaption
+      SelectColumnsDialogStrings.Caption = 'Select columns'
+      SelectColumnsDialogStrings.OK = '&OK'
+      SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+      EditControls = <>
+      RowsHeight = 17
+      TitleRowHeight = 17
       Columns = <
         item
           Expanded = False
           FieldName = 'idcliente'
-          Width = -1
           Visible = False
         end
         item
           Expanded = False
           FieldName = 'nomecliente'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'MS Sans Serif'
+          Title.Font.Style = [fsBold]
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'transportadora'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'MS Sans Serif'
+          Title.Font.Style = [fsBold]
+          Width = 259
           Visible = True
         end>
     end
   end
   object ButtonFechar: TButton
-    Left = 198
+    Left = 356
     Top = 371
     Width = 75
     Height = 25

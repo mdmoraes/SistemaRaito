@@ -45,7 +45,6 @@ type
     lbl11: TLabel;
     dbedtcomissaovalor1: TDBEdit;
     lokupcliente1: TDBLookupComboBox;
-    lokuprepresentada: TDBLookupComboBox;
     dbgrdItens: TDBGrid;
     DBEditCliente: TDBEdit;
     SpeedButton1: TSpeedButton;
@@ -54,6 +53,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     DBEdit1: TDBEdit;
+    edTransportadora: TDBEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -73,6 +73,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure DBEditClienteExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnNovaTransportadoraClick(Sender: TObject);
   private
    procedure LimparCache(Sender: TObject);
     { Private declarations }
@@ -145,21 +146,7 @@ begin
 //   Abort;
 //   end else
 
-//DMRaito.FDConnection1.StartTransaction;
-//try
-// DMRaito.FdTablePedidos.Post;
-// DMRaito.FdTableItens.Post;
-// ShowMessage('Registro gravado com sucesso.!');
-//  panelConfirma.Enabled:= False;
-//  panelNav.Visible:= True;
-//  panelTela.Enabled:= False;
-// DMRaito.FDConnection1.Commit;
-//except
-//DMRaito.FDConnection1.Rollback;
-//  raise;
-//end;
-
-    begin
+   begin
     DMRaito.FdTablePedidos.Post;
     DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
@@ -169,17 +156,16 @@ begin
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
     end;
 
-  //  if DMRaito.FdTablePedidos.State in [dsInsert] then
     begin
       DMRaito.FdTablePedidos.IndexName:= 'idxPedidoId';
       DMRaito.FdTablePedidos.First;
       DMRaito.FdTablePedidos.Last;
     end; // else
 
-//    if DMRaito.FdTablePedidos.State in [dsEdit] then
-//    begin
-//    DMRaito.FdTablePedidos.Locate('PedidoId', dbedtnum_pedido.text,[]);
-//    end;
+
+
+
+
 
 end;
 
@@ -207,9 +193,18 @@ begin
       frmRelatorioPedido.Free;
       end;
 end;
+procedure TfrmPedido.btnNovaTransportadoraClick(Sender: TObject);
+begin
+try
+ application.CreateForm(TfrmCadastroClientes, frmCadastroClientes);
+ frmCadastroClientes.ShowModal;
+ finally
+ frmCadastroClientes.Free;
+ end;
+end;
+
 procedure TfrmPedido.btnNovoClick(Sender: TObject);
-var
-it:integer;
+
 begin
   panelConfirma.Enabled:= True;
   panelNav.Visible:= False;

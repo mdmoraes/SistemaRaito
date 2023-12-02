@@ -50,6 +50,8 @@ type
     LabelContatos: TLabel;
     Label1: TLabel;
     DBEditcpf: TDBEdit;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);

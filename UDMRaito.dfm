@@ -13,10 +13,9 @@ object DMRaito: TDMRaito
     FetchOptions.RecordCountMode = cmTotal
     UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
     UpdateOptions.UpdateChangedFields = False
-    UpdateOptions.UpdateMode = upWhereAll
     UpdateOptions.LockWait = True
-    UpdateOptions.RefreshMode = rmManual
-    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.RefreshMode = rmAll
+    UpdateOptions.FetchGeneratorsPoint = gpNone
     UpdateOptions.CheckRequired = False
     UpdateOptions.CheckReadOnly = False
     UpdateOptions.CheckUpdatable = False
@@ -24,6 +23,7 @@ object DMRaito: TDMRaito
     Connected = True
     LoginPrompt = False
     Transaction = FDTransaction1
+    AfterCommit = FDSchemaAdapterAfterApplyUpdate
     Left = 496
     Top = 120
   end
@@ -754,6 +754,8 @@ object DMRaito: TDMRaito
     OnCalcFields = FdTablePedidosCalcFields
     OnNewRecord = FdTablePedidosNewRecord
     FieldOptions.PositionMode = poFieldNo
+    FieldOptions.UpdatePersistent = True
+    Filtered = True
     CachedUpdates = True
     IndexFieldNames = 'PedidoId'
     Connection = FDConnection1
@@ -762,9 +764,11 @@ object DMRaito: TDMRaito
     FetchOptions.Mode = fmAll
     FetchOptions.RecordCountMode = cmTotal
     ResourceOptions.AssignedValues = [rvEscapeExpand]
-    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate, uvUpdateChngFields, uvRefreshMode, uvCountUpdatedRecords, uvFetchGeneratorsPoint, uvAutoCommitUpdates]
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate, uvUpdateChngFields, uvUpdateMode, uvRefreshMode, uvCountUpdatedRecords, uvFetchGeneratorsPoint, uvAutoCommitUpdates]
     UpdateOptions.RefreshMode = rmAll
     UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'dbratio.pedidos'
+    UpdateOptions.KeyFields = 'PedidoId'
     TableName = 'dbratio.pedidos'
     Left = 32
     Top = 104
@@ -772,7 +776,6 @@ object DMRaito: TDMRaito
       FieldName = 'PedidoId'
       Origin = 'PedidoId'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object FdTablePedidosdata_pedido: TDateField
       AutoGenerateValue = arDefault

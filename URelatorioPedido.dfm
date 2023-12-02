@@ -9888,7 +9888,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         Name = 'PEDIDOID'
         DataType = ftInteger
         ParamType = ptInput
-        Value = Null
+        Value = 71
       end>
     object queryRelPedidoPedidoId: TFDAutoIncField
       FieldName = 'PedidoId'

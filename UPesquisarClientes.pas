@@ -4,15 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, DBGrids, ExtCtrls, Buttons, Data.DB;
+  Dialogs, StdCtrls, Grids, DBGrids, ExtCtrls, Buttons, Data.DB, JvExDBGrids,
+  JvDBGrid;
 
 type
   TFrmPesquisarClientes = class(TForm)
     grp1: TGroupBox;
     edt1: TEdit;
     pnl1: TPanel;
-    dbgrd1: TDBGrid;
     ButtonFechar: TButton;
+    dbgrd1: TJvDBGrid;
     procedure FormShow(Sender: TObject);
     procedure edt1Change(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -40,6 +41,7 @@ end;
 
 procedure TFrmPesquisarClientes.ButtonFecharClick(Sender: TObject);
 begin
+dbgrd1DblClick(Sender);
 Close;
 end;
 
@@ -47,6 +49,8 @@ procedure TFrmPesquisarClientes.dbgrd1DblClick(Sender: TObject);
 begin
 frmPedido.DBEditIdCliente.Text:= dbgrd1.Columns.Items[0].Field.Text;
 frmPedido.DBEditCliente.Text:= dbgrd1.Columns.Items[1].Field.Text;
+frmPedido.edTransportadora.Text:= dbgrd1.Columns.Items[2].Field.Text;
+
 Close;
 end;
 
