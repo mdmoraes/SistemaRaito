@@ -6,13 +6,13 @@ uses
   QRCtrls, Data.FMTBcd, Data.DB, Data.SqlExpr, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.DBCtrls;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.DBCtrls,
+  Vcl.Imaging.jpeg;
 type
   TfrmRelatorioPedido = class(TForm)
     QRPQuickrep1: TQRPQuickrep;
     QRBand1: TQRBand;
     QRBand2: TQRBand;
-    QRImage1: TQRImage;
     QRBand3: TQRBand;
     queryRelPedido: TFDQuery;
     qrdbtxtCliente: TQRDBText;
@@ -62,7 +62,6 @@ type
     qrlbl31: TQRLabel;
     qrlblTipoDePedido: TQRLabel;
     qrdbTIPOPEDIDO: TQRDBText;
-    qrdbOBS: TQRDBText;
     qrdbtotalbruto: TQRDBText;
     QRDBText1: TQRDBText;
     QRDBText2: TQRDBText;
@@ -112,6 +111,7 @@ type
     QRLabel5: TQRLabel;
     QRDBText7: TQRDBText;
     queryRelPedidoTOTALBRUTODESCONTO: TSingleField;
+    QRImage1: TQRImage;
     procedure queryRelPedidoCalcFields(DataSet: TDataSet);
 
   private

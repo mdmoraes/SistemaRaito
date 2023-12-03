@@ -117,36 +117,18 @@ begin
 end;
 
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
-var cont_reg:integer;
+//var cont_reg:integer;
 begin
     DMRaito.FdTablePedidos.Edit;
     DMRaito.FdTableItens.Edit;
 
-    if (dbrgrptipopedido.Value = '') or (dbrgrptipopedido.Value = '') then
-    begin
-    ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
-    Abort
-    end;
-
-    //verifica se o campo qtd foi preenchido.
-
-//    dbgrdItens.DataSource.DataSet.DisableControls;
-//    dbgrdItens.DataSource.DataSet.First;
-//    while not dbgrdItens.DataSource.DataSet.EOF do
+//    if (dbrgrptipopedido.Value = '') or (dbrgrptipopedido.Value = '') then
 //    begin
-//    if dbgrdItens.Columns.Items[6].Field.text = '' then
-//    ShowMessage('Campo quantidade deve ser preenchido!');
-//    dbgrdItens.DataSource.DataSet.Next
-//    end;
-//    dbgrdItens.DataSource.DataSet.EnableControls;
-
-//   if (dbgrdItens.Columns.Items[6].Field.Text < '1') then
+//    ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
+//    Abort
+//    end else
+//
 //   begin
-//   ShowMessage('Preencimento da quantidade é obrigatório, igual ou maior que 1');
-//   Abort;
-//   end else
-
-   begin
     DMRaito.FdTablePedidos.Post;
     DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
@@ -154,13 +136,13 @@ begin
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-    end;
+//  end;
 
-    begin
+//    begin
       DMRaito.FdTablePedidos.IndexName:= 'idxPedidoId';
       DMRaito.FdTablePedidos.First;
       DMRaito.FdTablePedidos.Last;
-    end; // else
+//    end;
 
 
 
@@ -298,10 +280,10 @@ end;
 procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
 begin
  try
- application.CreateForm(TfrmEscolherTelaParaPedidos, frmEscolherTelaParaPedidos);
- frmEscolherTelaParaPedidos.ShowModal;
+ application.CreateForm(TfrmBuscarProdutoParaPedido, frmBuscarProdutoParaPedido);
+ frmBuscarProdutoParaPedido.ShowModal;
  finally
- frmEscolherTelaParaPedidos.Free;
+ frmBuscarProdutoParaPedido.Free;
  end;
 end;
 procedure TfrmPedido.dbgrdItensKeyDown(Sender: TObject; var Key: Word;

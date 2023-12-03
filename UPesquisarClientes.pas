@@ -41,7 +41,7 @@ end;
 
 procedure TFrmPesquisarClientes.ButtonFecharClick(Sender: TObject);
 begin
-dbgrd1DblClick(Sender);
+//dbgrd1DblClick(Sender);
 Close;
 end;
 

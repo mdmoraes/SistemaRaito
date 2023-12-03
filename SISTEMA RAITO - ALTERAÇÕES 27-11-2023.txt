@@ -1,0 +1,36 @@
+SISTEMA RAITO - ALTERAÇÕES
+
+Algumas alterações.
+
+ 
+
+1 – Transportadora teria que estar junto com a ficha de clientes, como era no anterior, e sair no pedido. - ***FEITO***
+
+ 
+
+2 – Pedidos não aceita alterações depois de concluído ou seja, se tiver que acrescentar algo não aceita.
+
+      Na coluna desconto quando tenho por exemplo 10 itens e vou colocar o primeiro entra quando chamo o segundo o ícone vai para baixo  e tem que voltar para cima e sempre constante.
+
+
+3-  Na  coluna observações não aceita outra informação sem ser aquela já colocada.
+
+ 
+
+4 – Lista de Produtos normal pode ser cancelada pois na outra lista consta todos.
+
+      Lista Fabrica não entra descrição. ***FEITO***
+
+ 
+
+5 – O Layout da s paginas poderia ser igual ao anterior (vou enviar para que possa lembrar).
+
+
+6- O que poderia tirar também é no cabeçalho é o e-mail do Hotmail que não tenho mais e o Tel/Fax 11 3832 46 72. Portanto ficaria só o meu fixo o celular e o e-mail terra.  ***FEITO***
+
+7- Mais uma dúvida:
+Na maioria das vezes faço orçamento sem que a empresa esteja no cadastro. Ex. tenho uma empresa que tem filiais no brasil e recebo cotações, porém, tentei fazer um orçamento.  Consigo colocar só o nome, sem que ele esteja cadastrado coloco todos os dados dos produtos preço prazo desconto e ai tento  salvar ele salva mas não aparece voltando para o ultimo pedido que tire (que já estava cadastrado).
+
+Seria possível fazer esta cotação sem ele (o cliente)estar cadastrado?
+
+ 

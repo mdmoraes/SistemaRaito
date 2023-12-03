@@ -39,19 +39,56 @@ type
     lbl6: TLabel;
     dbedtcidade: TDBEdit;
     lbl7: TLabel;
-    dbedtestado: TDBEdit;
     lbl8: TLabel;
     dbedtcep: TDBEdit;
     lbl9: TLabel;
     dbedtcnpj: TDBEdit;
     lbl10: TLabel;
     dbedtinscestadual: TDBEdit;
-    dbgrdContatos: TDBGrid;
-    LabelContatos: TLabel;
     Label1: TLabel;
     DBEditcpf: TDBEdit;
     Label2: TLabel;
     DBEdit1: TDBEdit;
+    GroupBox1: TGroupBox;
+    DBComboBox1: TDBComboBox;
+    Label3: TLabel;
+    DBEdit2: TDBEdit;
+    Label4: TLabel;
+    DBEdit3: TDBEdit;
+    Label5: TLabel;
+    DBEdit4: TDBEdit;
+    Label6: TLabel;
+    DBEdit5: TDBEdit;
+    Label7: TLabel;
+    DBEdit6: TDBEdit;
+    Label8: TLabel;
+    DBEdit7: TDBEdit;
+    Label11: TLabel;
+    DBEdit10: TDBEdit;
+    Label12: TLabel;
+    DBEdit11: TDBEdit;
+    Label13: TLabel;
+    DBEdit12: TDBEdit;
+    Label20: TLabel;
+    DBEdit19: TDBEdit;
+    Label21: TLabel;
+    DBEdit20: TDBEdit;
+    Label22: TLabel;
+    DBEdit21: TDBEdit;
+    Label14: TLabel;
+    DBEdit13: TDBEdit;
+    Label15: TLabel;
+    DBEdit14: TDBEdit;
+    Label17: TLabel;
+    DBEdit16: TDBEdit;
+    Label18: TLabel;
+    DBEdit17: TDBEdit;
+    Label9: TLabel;
+    DBEdit8: TDBEdit;
+    Label10: TLabel;
+    DBEdit9: TDBEdit;
+    DBMemo1: TDBMemo;
+    Label16: TLabel;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -166,7 +203,7 @@ begin
     pnlConfirma.Enabled:= True;
     pnlNav.Visible:= False;
     panelTela.Enabled:= True;
-    dbgrdContatos.Enabled:= True;
+  //  dbgrdContatos.Enabled:= True;
     DMRaito.FDTableCliente.Edit;
     //panelTela.Enabled:= False;
 
@@ -211,15 +248,6 @@ begin
     pnlNav.Visible:= True;
     panelTela.Enabled:= False;
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-
-//    DMRaito.FDTableCliente.EmptyDataSet;
-//    DMRaito.FdTableContatoCliente.EmptyDataSet;
-
-    DMRaito.FDTableCliente.Active:= False;
-    DMRaito.FDTableCliente.Active:= True;
-
-    DMRaito.FdTableContatoCliente.Active:= False;
-    DMRaito.FdTableContatoCliente.Active:= True;
 
     //VAI PARA O ÚLTIMO REGISTRO
     DMRaito.FDTableCliente.IndexName:= 'IdxClienteId';
