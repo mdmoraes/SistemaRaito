@@ -8,21 +8,19 @@ object DMRaito: TDMRaito
       'Password=omegaone'
       'Server=127.0.0.1'
       'DriverID=MySQL')
-    FetchOptions.AssignedValues = [evMode, evRecordCountMode, evAutoFetchAll]
+    FetchOptions.AssignedValues = [evMode, evRecordCountMode, evAutoFetchAll, evDetailServerCascade]
     FetchOptions.Mode = fmAll
     FetchOptions.RecordCountMode = cmTotal
+    FetchOptions.DetailServerCascade = True
     UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
-    UpdateOptions.UpdateChangedFields = False
     UpdateOptions.LockWait = True
     UpdateOptions.RefreshMode = rmAll
-    UpdateOptions.FetchGeneratorsPoint = gpNone
     UpdateOptions.CheckRequired = False
     UpdateOptions.CheckReadOnly = False
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     Connected = True
     LoginPrompt = False
-    Transaction = FDTransaction1
     AfterCommit = FDSchemaAdapterAfterApplyUpdate
     Left = 496
     Top = 120
@@ -754,7 +752,6 @@ object DMRaito: TDMRaito
     OnCalcFields = FdTablePedidosCalcFields
     OnNewRecord = FdTablePedidosNewRecord
     Filtered = True
-    CachedUpdates = True
     IndexFieldNames = 'PedidoId'
     Connection = FDConnection1
     SchemaAdapter = FDSchemaAdapter
@@ -770,6 +767,7 @@ object DMRaito: TDMRaito
       FieldName = 'PedidoId'
       Origin = 'PedidoId'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FdTablePedidosdata_pedido: TDateField
       AutoGenerateValue = arDefault
@@ -870,13 +868,11 @@ object DMRaito: TDMRaito
     BeforePost = FdTableItensBeforePost
     AfterPost = FdTableItensAfterPost
     OnCalcFields = FdTableItensCalcFields
-    CachedUpdates = True
     IndexFieldNames = 'pedidos_PedidoId'
     MasterSource = dsPedidos
     MasterFields = 'PedidoId'
     DetailFields = 'pedidos_PedidoId'
     Connection = FDConnection1
-    SchemaAdapter = FDSchemaAdapter
     FetchOptions.AssignedValues = [evAutoFetchAll, evDetailCascade]
     FetchOptions.DetailCascade = True
     ResourceOptions.AssignedValues = [rvEscapeExpand]
@@ -1009,6 +1005,15 @@ object DMRaito: TDMRaito
     end
   end
   object FDSchemaAdapter: TFDSchemaAdapter
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.UpdateChangedFields = False
+    UpdateOptions.LockWait = True
+    UpdateOptions.RefreshMode = rmManual
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.CheckReadOnly = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateOptions.AutoCommitUpdates = True
     AfterApplyUpdate = FDSchemaAdapterAfterApplyUpdate
     Left = 576
     Top = 312
@@ -1097,10 +1102,5 @@ object DMRaito: TDMRaito
     DataSet = FDTableTabelaFixa
     Left = 600
     Top = 16
-  end
-  object FDTransaction1: TFDTransaction
-    Connection = FDConnection1
-    Left = 616
-    Top = 112
   end
 end

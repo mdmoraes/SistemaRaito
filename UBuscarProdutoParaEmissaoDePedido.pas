@@ -90,7 +90,7 @@ begin
           frmPedido.dbgrdItens.Columns.Items[13].Field.Text := '7';
           frmPedido.dbgrdItens.Columns.Items[7].Field.Text := gridItens.Columns.Items[6].Field.Text;
           end;
-         // frmPedido.dbgrdItens.SelectedIndex := 6;
+          frmPedido.dbgrdItens.SelectedIndex := 6;
          btnFechar.Click;
   end;
 end;

@@ -8,20 +8,22 @@ object DMRaito: TDMRaito
       'Password=omegaone'
       'Server=127.0.0.1'
       'DriverID=MySQL')
-    FetchOptions.AssignedValues = [evRecordCountMode, evAutoFetchAll]
+    FetchOptions.AssignedValues = [evMode, evRecordCountMode, evAutoFetchAll]
+    FetchOptions.Mode = fmAll
     FetchOptions.RecordCountMode = cmTotal
     UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
     UpdateOptions.UpdateChangedFields = False
-    UpdateOptions.UpdateMode = upWhereAll
     UpdateOptions.LockWait = True
-    UpdateOptions.RefreshMode = rmManual
-    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.RefreshMode = rmAll
+    UpdateOptions.FetchGeneratorsPoint = gpNone
     UpdateOptions.CheckRequired = False
     UpdateOptions.CheckReadOnly = False
     UpdateOptions.CheckUpdatable = False
     UpdateOptions.AutoCommitUpdates = True
     Connected = True
     LoginPrompt = False
+    Transaction = FDTransaction1
+    AfterCommit = FDSchemaAdapterAfterApplyUpdate
     Left = 496
     Top = 120
   end
@@ -267,6 +269,7 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'marcado'
       Origin = 'marcado'
+      OnGetText = FdTbImportacaomarcadoGetText
       Size = 2
     end
     object FdTbImportacaocodigo: TStringField
@@ -750,18 +753,16 @@ object DMRaito: TDMRaito
     AutoCalcFields = False
     OnCalcFields = FdTablePedidosCalcFields
     OnNewRecord = FdTablePedidosNewRecord
-    FieldOptions.PositionMode = poFieldNo
+    Filtered = True
     CachedUpdates = True
     IndexFieldNames = 'PedidoId'
     Connection = FDConnection1
     SchemaAdapter = FDSchemaAdapter
-    FetchOptions.AssignedValues = [evMode, evItems, evRecordCountMode, evAutoFetchAll, evDetailCascade]
-    FetchOptions.Mode = fmAll
-    FetchOptions.RecordCountMode = cmTotal
+    FetchOptions.AssignedValues = [evAutoClose]
     ResourceOptions.AssignedValues = [rvEscapeExpand]
-    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate, uvUpdateChngFields, uvRefreshMode, uvCountUpdatedRecords, uvFetchGeneratorsPoint, uvAutoCommitUpdates]
+    UpdateOptions.AssignedValues = [uvRefreshMode]
     UpdateOptions.RefreshMode = rmAll
-    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.KeyFields = 'PedidoId'
     TableName = 'dbratio.pedidos'
     Left = 32
     Top = 104
@@ -769,7 +770,6 @@ object DMRaito: TDMRaito
       FieldName = 'PedidoId'
       Origin = 'PedidoId'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object FdTablePedidosdata_pedido: TDateField
       AutoGenerateValue = arDefault

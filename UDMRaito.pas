@@ -179,7 +179,6 @@ type
     FdTableItensTotalItens: TSingleField;
     FdTablePedidostotalbrutodesconto: TSingleField;
     FdTbImportacaomarcado: TStringField;
-    FDTransaction1: TFDTransaction;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);

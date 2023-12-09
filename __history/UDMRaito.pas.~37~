@@ -175,6 +175,11 @@ type
     FdTablePedidosvrcomissao: TFloatField;
     FdTableItensliq2: TFloatField;
     FdTableItensliq3: TFloatField;
+    FdTableItensTotalDesc: TSingleField;
+    FdTableItensTotalItens: TSingleField;
+    FdTablePedidostotalbrutodesconto: TSingleField;
+    FdTbImportacaomarcado: TStringField;
+    FDTransaction1: TFDTransaction;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
@@ -182,6 +187,8 @@ type
     procedure FdTablePedidosCalcFields(DataSet: TDataSet);
     procedure FdTablePedidosNewRecord(DataSet: TDataSet);
     procedure FdTableItensBeforePost(DataSet: TDataSet);
+    procedure FdTbImportacaomarcadoGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Private declarations }
   public
@@ -205,16 +212,16 @@ begin
 end;
 procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
 var
-total, totalBruto: Double;
+totaldesconto, totalgeraldesconto, total, totalBruto: Double;
   begin
 //   if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
 //     begin
-//      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório, verifique. !');
+//      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório. !');
 //      Abort;
 //     end;
 
 
-
+      // calculo do total do pedido
       DMRaito.FdTableItens.DisableControls;
       DMRaito.FdTableItens.First;
       total:= 0;
@@ -225,11 +232,28 @@ total, totalBruto: Double;
       DMRaito.FdTableItens.Next;
 
       end;
-     // DMRaito.FdTableItens.Edit;
       DMRaito.FdTablePedidos.Edit;
       DMRaito.FdTablePedidosTotalBruto.Value:= total;
       DMRaito.FdTablePedidos.Post;
       DMRaito.FdTableItens.EnableControls;
+
+      // calculo do totalgeral de descontos do pedido
+      DMRaito.FdTableItens.DisableControls;
+      DMRaito.FdTableItens.First;
+      totaldesconto:= 0;
+      totalgeraldesconto:= 0;
+      while not DMRaito.FdTableItens.Eof do
+      begin
+      totaldesconto:= totaldesconto + DMRaito.FdTableItensTotalDesc.Value;
+      DMRaito.FdTableItens.Next;
+
+      end;
+      DMRaito.FdTablePedidos.Edit;
+      DMRaito.FdTablePedidostotalbrutodesconto.Value:= totaldesconto;
+      DMRaito.FdTablePedidos.Post;
+      DMRaito.FdTableItens.EnableControls;
+
+
 
 
 
@@ -245,6 +269,7 @@ end;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
+//DMRaito.FdTableItens.Edit;
 //cálculo liq1
 DMRaito.FdTableItensliq1.Value:=
 ((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp1.Value) /100) * DMRaito.FdTableItensqtd.Value;
@@ -289,6 +314,12 @@ begin
 //Após, abra sua tabela, dê um Refresh e digite o seguinte:
 //DMRaito.FdTablePedidos:=cont_reg;
 
+end;
+
+procedure TDMRaito.FdTbImportacaomarcadoGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+Text := EmptyStr;
 end;
 
 end.

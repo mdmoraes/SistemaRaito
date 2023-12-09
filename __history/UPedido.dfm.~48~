@@ -356,7 +356,7 @@ object frmPedido: TfrmPedido
       Height = 22
     end
     object btnNovoCliente: TSpeedButton
-      Left = 651
+      Left = 643
       Top = 32
       Width = 23
       Height = 25
@@ -428,6 +428,7 @@ object frmPedido: TfrmPedido
       NumGlyphs = 2
       ParentShowHint = False
       ShowHint = True
+      OnClick = btnNovaTransportadoraClick
     end
     object lbl9: TLabel
       Left = 9
@@ -669,6 +670,7 @@ object frmPedido: TfrmPedido
           Visible = True
         end
         item
+          DropDownRows = 1
           Expanded = False
           FieldName = 'qtd'
           Title.Alignment = taCenter
@@ -814,7 +816,7 @@ object frmPedido: TfrmPedido
     object edtObs: TJvDBRichEdit
       Left = 358
       Top = 170
-      Width = 672
+      Width = 627
       Height = 144
       DataField = 'obs'
       DataSource = DMRaito.dsPedidos
@@ -836,6 +838,7 @@ object frmPedido: TfrmPedido
       Height = 23
       DataField = 'transportadora'
       DataSource = DMRaito.dsPedidos
+      ReadOnly = True
       TabOrder = 11
     end
   end

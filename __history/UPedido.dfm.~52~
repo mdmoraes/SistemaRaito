@@ -356,7 +356,7 @@ object frmPedido: TfrmPedido
       Height = 22
     end
     object btnNovoCliente: TSpeedButton
-      Left = 651
+      Left = 643
       Top = 32
       Width = 23
       Height = 25
@@ -428,6 +428,7 @@ object frmPedido: TfrmPedido
       NumGlyphs = 2
       ParentShowHint = False
       ShowHint = True
+      OnClick = btnNovaTransportadoraClick
     end
     object lbl9: TLabel
       Left = 9
@@ -584,7 +585,7 @@ object frmPedido: TfrmPedido
       Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
-      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
       TabOrder = 7
       TitleFont.Charset = DEFAULT_CHARSET
@@ -669,6 +670,7 @@ object frmPedido: TfrmPedido
           Visible = True
         end
         item
+          DropDownRows = 1
           Expanded = False
           FieldName = 'qtd'
           Title.Alignment = taCenter
@@ -814,7 +816,7 @@ object frmPedido: TfrmPedido
     object edtObs: TJvDBRichEdit
       Left = 358
       Top = 170
-      Width = 672
+      Width = 627
       Height = 144
       DataField = 'obs'
       DataSource = DMRaito.dsPedidos
@@ -834,6 +836,9 @@ object frmPedido: TfrmPedido
       Top = 122
       Width = 465
       Height = 23
+      DataField = 'transportadora'
+      DataSource = DMRaito.dsPedidos
+      ReadOnly = True
       TabOrder = 11
     end
   end
