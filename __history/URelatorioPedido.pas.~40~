@@ -6,13 +6,13 @@ uses
   QRCtrls, Data.FMTBcd, Data.DB, Data.SqlExpr, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.DBCtrls;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.DBCtrls,
+  Vcl.Imaging.jpeg;
 type
   TfrmRelatorioPedido = class(TForm)
     QRPQuickrep1: TQRPQuickrep;
     QRBand1: TQRBand;
     QRBand2: TQRBand;
-    QRImage1: TQRImage;
     QRBand3: TQRBand;
     queryRelPedido: TFDQuery;
     qrdbtxtCliente: TQRDBText;
@@ -62,7 +62,6 @@ type
     qrlbl31: TQRLabel;
     qrlblTipoDePedido: TQRLabel;
     qrdbTIPOPEDIDO: TQRDBText;
-    qrdbOBS: TQRDBText;
     qrdbtotalbruto: TQRDBText;
     QRDBText1: TQRDBText;
     QRDBText2: TQRDBText;
@@ -93,7 +92,6 @@ type
     queryRelPedidoemailnfe: TStringField;
     queryRelPedidoinscestadual: TStringField;
     queryRelPedidoemail: TStringField;
-    queryRelPedidoemailnfe_1: TStringField;
     queryRelPedidocnpj: TStringField;
     queryRelPedidoICMS: TStringField;
     QRDBRichText1: TQRDBRichText;
@@ -109,6 +107,11 @@ type
     QRDBText6: TQRDBText;
     queryRelPedidoTOTALDESC: TFloatField;
     queryRelPedidoTOTALITENS: TFloatField;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRDBText7: TQRDBText;
+    queryRelPedidoTOTALBRUTODESCONTO: TSingleField;
+    QRImage1: TQRImage;
     procedure queryRelPedidoCalcFields(DataSet: TDataSet);
 
   private
@@ -134,24 +137,24 @@ begin
 
 //cálculo liq1
 queryRelPedidoLIQ1.Value:=
-((queryRelPedidoVRUNIT.Value * queryRelPedidoP1.Value) /100) * DMRaito.FdTableItensqtd.Value;
+((queryRelPedidoVRUNIT.Value * queryRelPedidoP1.Value) /100) * queryRelPedidoQTD.Value;
 
 //cálculo liq2
 queryRelPedidoLIQ2.Value:=
-((queryRelPedidoVRUNIT.Value * queryRelPedidoP2.Value) /100) * DMRaito.FdTableItensqtd.Value;
+((queryRelPedidoVRUNIT.Value * queryRelPedidoP2.Value) /100) * queryRelPedidoQTD.Value;
 
 //cálculo liq3
 queryRelPedidoLIQ3.Value:=
-((queryRelPedidoVRUNIT.Value * queryRelPedidoP3.Value) /100) * DMRaito.FdTableItensqtd.Value;
+((queryRelPedidoVRUNIT.Value * queryRelPedidoP3.Value) /100) * queryRelPedidoQTD.Value;
 
 //cálculo TotalDesc
-DMRaito.FdTableItensTotalDesc.Value:=
-(DMRaito.FdTableItensliq1.Value + DMRaito.FdTableItensliq2.Value + DMRaito.FdTableItensliq3.Value);
+queryRelPedidoTOTALDESC.Value:=
+(queryRelPedidoLIQ1.Value + queryRelPedidoLIQ2.Value + queryRelPedidoLIQ3.Value);
 
 
 //cálculo TotalItens
-DMRaito.FdTableItensTotalItens.Value :=
-((queryRelPedidoVRUNIT.Value * DMRaito.FdTableItensqtd.Value) - DMRaito.FdTableItensTotalDesc.Value);
+queryRelPedidoTOTALITENS.Value :=
+((queryRelPedidoVRUNIT.Value * queryRelPedidoQTD.Value) - queryRelPedidoTOTALDESC.Value);
 
 
 

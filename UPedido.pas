@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Option, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Stan.Param, JvExExtCtrls,
   JvExtComponent, JvDBRadioPanel, JvExControls, JvLabel, JvDBControls,
-  JvExStdCtrls, JvRichEdit, JvDBRichEdit;
+  JvExStdCtrls, JvRichEdit, JvDBRichEdit, System.IniFiles, QRPDFFilt, System.UITypes;
 type
   TfrmPedido = class(TForm)
     panelNav: TPanel;
@@ -54,6 +54,7 @@ type
     Label2: TLabel;
     DBEdit1: TDBEdit;
     edTransportadora: TDBEdit;
+    QRPDFFilter1: TQRPDFFilter;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -130,8 +131,14 @@ end;
 
 
 procedure TfrmPedido.btnImprimirClick(Sender: TObject);
-//gerar o relatório de pedido no QUICK REPORT
+var config: TIniFile; aPDF: TQRPDFDocumentFilter; caminhoP, data, pasta, numpedido, cliente: String;
+//pasta: D:\PROJETOS DELPHI\Projeto Raito D11\EMAILS
+//C:\PROJETO RAITO\e-mails
 begin
+pasta:= 'C:\PROJETO RAITO\e-mails\';
+numpedido:= dbedtnum_pedido.Text;
+cliente  := DBEditCliente.Text;
+
   try
     Application.CreateForm(TfrmRelatorioPedido, frmRelatorioPedido);
      // DMRatio.TBCadCliente.Locate('IdCliente', dbCodCliente.Text, []);
@@ -144,7 +151,25 @@ begin
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption := 'Orçamento'
     else
     frmRelatorioPedido.qrdbTIPOPEDIDO.Caption := 'Venda';
-    frmRelatorioPedido.QRPQuickrep1.Preview;
+    // envia o relatório para uma pasta com nome de arquivo +.pdf
+  //    config := TIniFile.Create(extractfiledir(ParamStr(0))+'\config.ini'); //Abre o arquivo INI
+   //   caminhoP := config.ReadString('PDF','pasta',''); //Pega o caminho para salvar o PDF (Arquivo INI)
+    //  if DirectoryExists(caminhoP) then //Verifica se a pasta realmente existe
+    //  begin
+        data := FormatDateTime('dd-mm-yyyy',Date()); //Formando o nome do arquivo
+//        caminhoP := ' Nº Ped.: ' +numpedido + '-' + ' Cliente: ' + cliente + '.PDF'; //Formando o nome do arquivo
+       // s:=v1+' '+v2
+        caminhoP := pasta + numpedido + ' - ' +cliente + '.PDF';
+        aPDF := TQRPDFDocumentFilter.Create(caminhoP);
+
+        frmRelatorioPedido.QRPQuickrep1.ExportToFilter(aPDF);
+
+      //  frmRelatorioPedido.QRPQuickrep1.ExportToFilter(QRPDFFilter1.Create(caminhoP));
+         //TQRPDFDocumentFilter - Gerando o PDF
+        ShowMessage('PDF gerado em: ' + caminhoP);
+     // end;
+
+   // frmRelatorioPedido.QRPQuickrep1.Preview;
     frmRelatorioPedido.queryRelPedido.Close;
   finally
     frmRelatorioPedido.Free;

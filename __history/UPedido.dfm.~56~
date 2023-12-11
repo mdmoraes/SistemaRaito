@@ -12,7 +12,6 @@ object frmPedido: TfrmPedido
   Font.Style = []
   Position = poMainFormCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   TextHeight = 15
   object lbl8: TLabel
     Left = 1072
@@ -585,7 +584,7 @@ object frmPedido: TfrmPedido
       Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
-      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
       TabOrder = 7
       TitleFont.Charset = DEFAULT_CHARSET
@@ -593,6 +592,7 @@ object frmPedido: TfrmPedido
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnColExit = dbgrdItensColExit
       OnEditButtonClick = dbgrdItensEditButtonClick
       OnKeyDown = dbgrdItensKeyDown
       Columns = <
@@ -670,6 +670,7 @@ object frmPedido: TfrmPedido
           Visible = True
         end
         item
+          DropDownRows = 1
           Expanded = False
           FieldName = 'qtd'
           Title.Alignment = taCenter
@@ -815,7 +816,7 @@ object frmPedido: TfrmPedido
     object edtObs: TJvDBRichEdit
       Left = 358
       Top = 170
-      Width = 672
+      Width = 627
       Height = 144
       DataField = 'obs'
       DataSource = DMRaito.dsPedidos
@@ -882,5 +883,14 @@ object frmPedido: TfrmPedido
   object BalloonHint1: TBalloonHint
     Left = 1152
     Top = 160
+  end
+  object QRPDFFilter1: TQRPDFFilter
+    CompressionOn = False
+    Fonthandling = False
+    TextEncoding = AnsiEncoding
+    Codepage = '1252'
+    SuppressDateTime = False
+    Left = 1024
+    Top = 110
   end
 end

@@ -884,4 +884,13 @@ object frmPedido: TfrmPedido
     Left = 1152
     Top = 160
   end
+  object QRPDFFilter1: TQRPDFFilter
+    CompressionOn = False
+    Fonthandling = False
+    TextEncoding = AnsiEncoding
+    Codepage = '1252'
+    SuppressDateTime = False
+    Left = 1024
+    Top = 110
+  end
 end

@@ -15,7 +15,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
   object QRPQuickrep1: TQRPQuickrep
     Left = 8
     Top = 8
-    Width = 1017
+    Width = 794
     Height = 1123
     ShowingPreview = False
     DataSet = queryRelPedido
@@ -79,7 +79,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand1: TQRBand
       Left = 19
       Top = 19
-      Width = 979
+      Width = 756
       Height = 115
       Frame.DrawTop = True
       Frame.DrawBottom = True
@@ -92,7 +92,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       LinkBand = QRBand3
       Size.Values = (
         304.270833333333300000
-        2590.270833333333000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbPageHeader
@@ -673,7 +673,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand2: TQRBand
       Left = 19
       Top = 379
-      Width = 979
+      Width = 756
       Height = 18
       AlignToBottom = False
       TransparentBand = False
@@ -688,7 +688,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ParentFont = False
       Size.Values = (
         47.625000000000000000
-        2590.270833333333000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbDetail
@@ -1037,7 +1037,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand3: TQRBand
       Left = 19
       Top = 134
-      Width = 979
+      Width = 756
       Height = 245
       Frame.DrawBottom = True
       AlignToBottom = False
@@ -1046,7 +1046,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ForceNewPage = True
       Size.Values = (
         648.229166666666700000
-        2590.270833333333000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbTitle
@@ -1259,13 +1259,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrsysdt1: TQRSysData
         Left = 606
         Top = 30
-        Width = 114
+        Width = 66
         Height = 16
         Size.Values = (
           42.333333333333330000
           1603.375000000000000000
           79.375000000000000000
-          301.625000000000000000)
+          174.625000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -2469,7 +2469,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object QRBand4: TQRBand
       Left = 19
       Top = 397
-      Width = 979
+      Width = 756
       Height = 356
       Frame.DrawTop = True
       AlignToBottom = False
@@ -2478,7 +2478,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ForceNewPage = False
       Size.Values = (
         941.916666666666700000
-        2590.270833333333000000)
+        2000.250000000000000000)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbSummary
@@ -3024,5 +3024,14 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       DisplayFormat = 'R$ #,##0.00'
       EditFormat = 'R$ #,##0.00'
     end
+  end
+  object QRPDFFilter1: TQRPDFFilter
+    CompressionOn = False
+    Fonthandling = False
+    TextEncoding = AnsiEncoding
+    Codepage = '1252'
+    SuppressDateTime = False
+    Left = 691
+    Top = 533
   end
 end

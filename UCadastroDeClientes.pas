@@ -101,10 +101,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure dbedtnomeclienteExit(Sender: TObject);
     procedure DBEditcpfExit(Sender: TObject);
-    procedure dbgrdContatosColEnter(Sender: TObject);
     procedure dbgrdContatosKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure dbgrdContatosColExit(Sender: TObject);
   private
   procedure LimparCache(Sender: TObject);
     { Private declarations }
@@ -233,28 +231,20 @@ begin
     panelTela.Enabled:= True;
 
     DMRaito.FDTableCliente.Edit;
-    DMRaito.FdTableContatoCliente.Edit;
-
-//   if DMRaito.FdTableContatoClienteTipo.Value = 'TELEFONE' then
-//   DMRaito.FdTableContatoClienteDescricao.EditMask:= '(00) 0000-0000';
-//
-//   if DMRaito.FdTableContatoClienteTipo.Value = 'CELULAR' then
-//   DMRaito.FdTableContatoClienteDescricao.EditMask:= '(00) 0 0000-0000';
+  //  DMRaito.FdTableContatoCliente.Edit;
 
     DMRaito.FDTableCliente.Post;
-    DMRaito.FdTableContatoCliente.Post;
+//    DMRaito.FdTableContatoCliente.Post;
     ShowMessage('Registro gravado com sucesso.!');
     pnlConfirma.Enabled:= False;
     pnlNav.Visible:= True;
     panelTela.Enabled:= False;
-    DMRaito.FDSchemaAdapter.ApplyUpdates(0);
+    //DMRaito.FDSchemaAdapter.ApplyUpdates(0);
 
     //VAI PARA O ÚLTIMO REGISTRO
-    DMRaito.FDTableCliente.IndexName:= 'IdxClienteId';
-    DMRaito.FDTableCliente.First;
-    DMRaito.FDTableCliente.Last;
-
-
+//    DMRaito.FDTableCliente.IndexName:= 'IdxClienteId';
+//    DMRaito.FDTableCliente.First;
+//    DMRaito.FDTableCliente.Last;
 end;
 
 procedure TfrmCadastroClientes.btnNovoClick(Sender: TObject);
@@ -304,29 +294,10 @@ procedure TfrmCadastroClientes.dbedtnomeclienteExit(Sender: TObject);
 begin
   if DMRaito.FDTableCliente.State in [dsinsert, dsEdit] then
   begin
+  DMRaito.FDTableCliente.Edit;
   DMRaito.FDTableCliente.Post;
   end;
        //   dbedtnomecliente.SetFocus;
-end;
-
-procedure TfrmCadastroClientes.dbgrdContatosColEnter(Sender: TObject);
-begin
-//if DMRaito.FdTableContatoCliente.State in [dsinsert, dsedit] then
-//begin
-//if dbgrdContatos.Fields[2].Value = 'TELEFONE' then
-//   dbgrdContatos.Fields[3].EditMask:= '(00)0000-0000' else
-// //  dbgrdContatos.Fields[3].EditMask:= '';
-//
-// if dbgrdContatos.Fields[2].Value = 'CELULAR' then
-//   dbgrdContatos.Fields[3].EditMask:= '(00)00000-0000' else
-//end;
-
-end;
-
-procedure TfrmCadastroClientes.dbgrdContatosColExit(Sender: TObject);
-begin
-//if dbgrdContatos.Columns.Items[2].Field.Text = 'TELEFONE' then
-//   dbgrdContatos.Columns.Items[3].Field.Text:= '(99) 9999-9999;0;_';
 end;
 
 procedure TfrmCadastroClientes.dbgrdContatosDblClick(Sender: TObject);
@@ -342,20 +313,20 @@ if Key = VK_DELETE
        if MessageDlg('Deseja Excluir este Item selecionado ?',mtConfirmation,[mbYes,mbNo],0)=mrYes
        then begin
             DMRaito.FdTableContatoCliente.Delete;
-            DMRaito.FdTableContatoCliente.ApplyUpdates(0);
+//            DMRaito.FdTableContatoCliente.ApplyUpdates(0);
        end;
   end;
 end;
 
 procedure TfrmCadastroClientes.FormCreate(Sender: TObject);
 begin
-DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
+//DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
 end;
 
 procedure TfrmCadastroClientes.LimparCache(Sender: TObject);
 begin
-  DMRaito.FDTableCliente.CommitUpdates();
-  DMRaito.FdTableContatoCliente.CommitUpdates();
+ // DMRaito.FDTableCliente.CommitUpdates();
+ // DMRaito.FdTableContatoCliente.CommitUpdates();
 end;
 
 end.

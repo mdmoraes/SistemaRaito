@@ -7,7 +7,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.DBCtrls,
-  Vcl.Imaging.jpeg;
+  Vcl.Imaging.jpeg, QRPDFFilt;
 type
   TfrmRelatorioPedido = class(TForm)
     QRPQuickrep1: TQRPQuickrep;
@@ -112,6 +112,7 @@ type
     QRDBText7: TQRDBText;
     queryRelPedidoTOTALBRUTODESCONTO: TSingleField;
     QRImage1: TQRImage;
+    QRPDFFilter1: TQRPDFFilter;
     procedure queryRelPedidoCalcFields(DataSet: TDataSet);
 
   private

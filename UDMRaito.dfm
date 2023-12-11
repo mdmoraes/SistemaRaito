@@ -29,10 +29,8 @@ object DMRaito: TDMRaito
     Active = True
     BeforePost = FDTableClienteBeforePost
     Filtered = True
-    CachedUpdates = True
     IndexName = 'IdxCliente'
     Connection = FDConnection1
-    SchemaAdapter = FDSchemaAdapter
     FetchOptions.AssignedValues = [evAutoClose]
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     UpdateOptions.AssignedValues = [uvRefreshMode]
@@ -483,14 +481,12 @@ object DMRaito: TDMRaito
   end
   object FdTableContatoCliente: TFDTable
     Active = True
-    CachedUpdates = True
     IndexFieldNames = 'cadastroclientes_idcliente'
     ConstraintsEnabled = True
     MasterSource = dsCliente
     MasterFields = 'idcliente'
     DetailFields = 'cadastroclientes_idcliente'
     Connection = FDConnection1
-    SchemaAdapter = FDSchemaAdapter
     FetchOptions.AssignedValues = [evDetailCascade]
     FetchOptions.DetailCascade = True
     ResourceOptions.AssignedValues = [rvEscapeExpand]

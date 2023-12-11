@@ -3,7 +3,7 @@ object frmCadastroClientes: TfrmCadastroClientes
   Top = 0
   Caption = 'Cadastro de Clientes'
   ClientHeight = 662
-  ClientWidth = 1250
+  ClientWidth = 1183
   Color = clGradientInactiveCaption
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -263,8 +263,8 @@ object frmCadastroClientes: TfrmCadastroClientes
   object panelTela: TPanel
     Left = 8
     Top = 8
-    Width = 1233
-    Height = 577
+    Width = 1161
+    Height = 591
     Enabled = False
     TabOrder = 1
     object lbl: TLabel
@@ -394,7 +394,7 @@ object frmCadastroClientes: TfrmCadastroClientes
     object dbedtdatacadastro: TDBEdit
       Left = 1040
       Top = 24
-      Width = 174
+      Width = 97
       Height = 25
       DataField = 'datacadastro'
       DataSource = DMRaito.dsCliente
@@ -490,9 +490,12 @@ object frmCadastroClientes: TfrmCadastroClientes
     object GroupBox1: TGroupBox
       Left = 8
       Top = 201
-      Width = 1041
-      Height = 344
+      Width = 991
+      Height = 376
       Caption = '  Contatos  '
+      Color = clMoneyGreen
+      ParentBackground = False
+      ParentColor = False
       TabOrder = 12
       object Label3: TLabel
         Left = 5
@@ -542,21 +545,108 @@ object frmCadastroClientes: TfrmCadastroClientes
         Caption = 'cel1'
         FocusControl = DBEdit7
       end
-      object Label9: TLabel
-        Left = 48
-        Top = 352
+      object Label11: TLabel
+        Left = 112
+        Top = 66
         Width = 23
         Height = 17
         Caption = 'cel2'
-        FocusControl = DBEdit8
+        FocusControl = DBEdit10
       end
-      object Label10: TLabel
-        Left = 48
-        Top = 400
+      object Label12: TLabel
+        Left = 219
+        Top = 66
         Width = 23
         Height = 17
         Caption = 'cel3'
+        FocusControl = DBEdit11
+      end
+      object Label13: TLabel
+        Left = 323
+        Top = 67
+        Width = 31
+        Height = 17
+        Caption = 'radio'
+        FocusControl = DBEdit12
+      end
+      object Label20: TLabel
+        Left = 471
+        Top = 66
+        Width = 42
+        Height = 17
+        Caption = 'idradio'
+        FocusControl = DBEdit19
+      end
+      object Label21: TLabel
+        Left = 5
+        Top = 112
+        Width = 24
+        Height = 17
+        Caption = 'msn'
+        FocusControl = DBEdit20
+      end
+      object Label22: TLabel
+        Left = 266
+        Top = 113
+        Width = 30
+        Height = 17
+        Caption = 'skipe'
+        FocusControl = DBEdit21
+      end
+      object Label14: TLabel
+        Left = 527
+        Top = 113
+        Width = 51
+        Height = 17
+        Caption = 'contato1'
+        FocusControl = DBEdit13
+      end
+      object Label15: TLabel
+        Left = 696
+        Top = 112
+        Width = 51
+        Height = 17
+        Caption = 'contato2'
+        FocusControl = DBEdit14
+      end
+      object Label17: TLabel
+        Left = 5
+        Top = 155
+        Width = 31
+        Height = 17
+        Caption = 'email'
+        FocusControl = DBEdit16
+      end
+      object Label18: TLabel
+        Left = 297
+        Top = 155
+        Width = 49
+        Height = 17
+        Caption = 'emailnfe'
+        FocusControl = DBEdit17
+      end
+      object Label9: TLabel
+        Left = 589
+        Top = 156
+        Width = 20
+        Height = 17
+        Caption = 'site'
+        FocusControl = DBEdit8
+      end
+      object Label10: TLabel
+        Left = 5
+        Top = 200
+        Width = 36
+        Height = 17
+        Caption = 'twitter'
         FocusControl = DBEdit9
+      end
+      object Label16: TLabel
+        Left = 5
+        Top = 248
+        Width = 30
+        Height = 17
+        Caption = 'OBS.:'
       end
       object DBEdit2: TDBEdit
         Left = 5
@@ -612,23 +702,121 @@ object frmCadastroClientes: TfrmCadastroClientes
         DataSource = DMRaito.dsCliente
         TabOrder = 5
       end
-      object DBEdit8: TDBEdit
-        Left = 48
-        Top = 368
-        Width = 259
+      object DBEdit10: TDBEdit
+        Left = 112
+        Top = 82
+        Width = 101
         Height = 25
         DataField = 'cel2'
         DataSource = DMRaito.dsCliente
         TabOrder = 6
       end
-      object DBEdit9: TDBEdit
-        Left = 48
-        Top = 416
-        Width = 259
+      object DBEdit11: TDBEdit
+        Left = 219
+        Top = 82
+        Width = 99
         Height = 25
         DataField = 'cel3'
         DataSource = DMRaito.dsCliente
         TabOrder = 7
+      end
+      object DBEdit12: TDBEdit
+        Left = 323
+        Top = 83
+        Width = 142
+        Height = 25
+        DataField = 'radio'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 8
+      end
+      object DBEdit19: TDBEdit
+        Left = 471
+        Top = 82
+        Width = 142
+        Height = 25
+        DataField = 'idradio'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 9
+      end
+      object DBEdit20: TDBEdit
+        Left = 5
+        Top = 128
+        Width = 255
+        Height = 25
+        DataField = 'msn'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 10
+      end
+      object DBEdit21: TDBEdit
+        Left = 266
+        Top = 129
+        Width = 255
+        Height = 25
+        DataField = 'skipe'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 11
+      end
+      object DBEdit13: TDBEdit
+        Left = 527
+        Top = 129
+        Width = 163
+        Height = 25
+        DataField = 'contato1'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 12
+      end
+      object DBEdit14: TDBEdit
+        Left = 696
+        Top = 128
+        Width = 163
+        Height = 25
+        DataField = 'contato2'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 13
+      end
+      object DBEdit16: TDBEdit
+        Left = 5
+        Top = 171
+        Width = 286
+        Height = 25
+        DataField = 'email'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 14
+      end
+      object DBEdit17: TDBEdit
+        Left = 297
+        Top = 173
+        Width = 286
+        Height = 25
+        DataField = 'emailnfe'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 15
+      end
+      object DBEdit8: TDBEdit
+        Left = 589
+        Top = 172
+        Width = 270
+        Height = 25
+        DataField = 'site'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 16
+      end
+      object DBEdit9: TDBEdit
+        Left = 5
+        Top = 216
+        Width = 286
+        Height = 25
+        DataField = 'twitter'
+        DataSource = DMRaito.dsCliente
+        TabOrder = 17
+      end
+      object DBMemo1: TDBMemo
+        Left = 5
+        Top = 268
+        Width = 854
+        Height = 93
+        ScrollBars = ssBoth
+        TabOrder = 18
       end
     end
     object DBComboBox1: TDBComboBox

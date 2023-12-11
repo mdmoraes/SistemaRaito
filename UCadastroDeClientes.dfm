@@ -444,7 +444,6 @@ object frmCadastroClientes: TfrmCadastroClientes
       Height = 25
       DataField = 'cep'
       DataSource = DMRaito.dsCliente
-      MaxLength = 9
       TabOrder = 7
     end
     object dbedtcnpj: TDBEdit
@@ -454,7 +453,6 @@ object frmCadastroClientes: TfrmCadastroClientes
       Height = 25
       DataField = 'cnpj'
       DataSource = DMRaito.dsCliente
-      MaxLength = 18
       TabOrder = 8
       OnExit = dbedtcnpjExit
     end
@@ -474,7 +472,6 @@ object frmCadastroClientes: TfrmCadastroClientes
       Height = 25
       DataField = 'cpf'
       DataSource = DMRaito.dsCliente
-      MaxLength = 14
       TabOrder = 10
       OnExit = DBEditcpfExit
     end

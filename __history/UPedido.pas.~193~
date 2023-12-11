@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Option, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Stan.Param, JvExExtCtrls,
   JvExtComponent, JvDBRadioPanel, JvExControls, JvLabel, JvDBControls,
-  JvExStdCtrls, JvRichEdit, JvDBRichEdit;
+  JvExStdCtrls, JvRichEdit, JvDBRichEdit, System.IniFiles, QRPDFFilt, System.UITypes;
 type
   TfrmPedido = class(TForm)
     panelNav: TPanel;
@@ -54,6 +54,7 @@ type
     Label2: TLabel;
     DBEdit1: TDBEdit;
     edTransportadora: TDBEdit;
+    QRPDFFilter1: TQRPDFFilter;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -72,8 +73,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure DBEditClienteExit(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure btnNovaTransportadoraClick(Sender: TObject);
+    procedure dbgrdItensColExit(Sender: TObject);
   private
    procedure LimparCache(Sender: TObject);
     { Private declarations }
@@ -117,47 +118,26 @@ begin
 end;
 
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
-
 begin
-    if ((DMRaito.FdTablePedidos.State in [dsInsert]) and
-    (DMRaito.FdTableItens.State in [dsInsert])) then
-    begin
-    DMRaito.FdTablePedidos.Insert;
-    DMRaito.FdTableItens.Insert;
+    DMRaito.FdTablePedidos.Edit;
+    DMRaito.FdTableItens.Edit;
     DMRaito.FdTablePedidos.Post;
     DMRaito.FdTableItens.Post;
-    ShowMessage('Registro Incluído com sucesso.!');
+    ShowMessage('Registro gravado com sucesso.!');
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
-    DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-    DMRaito.FdTablePedidos.IndexName:= 'idxPedidoId';
-    DMRaito.FdTablePedidos.First;
-    DMRaito.FdTablePedidos.Last;
-    end;
-
-    begin
-    if ((DMRaito.FdTablePedidos.State in [dsEdit]) or
-       (DMRaito.FdTableItens.State in [dsEdit])) then
-        DMRaito.FdTablePedidos.Edit;
-        DMRaito.FdTableItens.Edit;
-        DMRaito.FdTablePedidos.Post;
-        DMRaito.FdTableItens.Post;
-        ShowMessage('Registro Alterado com sucesso.!');
-        panelConfirma.Enabled:= False;
-        panelNav.Visible:= True;
-        panelTela.Enabled:= False;
-        DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-        DMRaito.FdTablePedidos.IndexName:= 'idxPedidoId';
-        DMRaito.FdTablePedidos.First;
-        DMRaito.FdTablePedidos.Last;
-    end;
 end;
 
 
 procedure TfrmPedido.btnImprimirClick(Sender: TObject);
-//gerar o relatório de pedido no QUICK REPORT
+var config: TIniFile; aPDF: TQRPDFDocumentFilter; caminhoP, data, pasta, numpedido, cliente: String;
+//pasta: D:\PROJETOS DELPHI\Projeto Raito D11\EMAILS
 begin
+pasta:= 'D:\PROJETOS DELPHI\Projeto Raito D11\EMAILS\';
+numpedido:= dbedtnum_pedido.Text;
+cliente  := DBEditCliente.Text;
+
   try
     Application.CreateForm(TfrmRelatorioPedido, frmRelatorioPedido);
      // DMRatio.TBCadCliente.Locate('IdCliente', dbCodCliente.Text, []);
@@ -170,7 +150,24 @@ begin
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption := 'Orçamento'
     else
     frmRelatorioPedido.qrdbTIPOPEDIDO.Caption := 'Venda';
-    frmRelatorioPedido.QRPQuickrep1.Preview;
+    // envia o relatório para uma pasta com nome de arquivo +.pdf
+  //    config := TIniFile.Create(extractfiledir(ParamStr(0))+'\config.ini'); //Abre o arquivo INI
+   //   caminhoP := config.ReadString('PDF','pasta',''); //Pega o caminho para salvar o PDF (Arquivo INI)
+    //  if DirectoryExists(caminhoP) then //Verifica se a pasta realmente existe
+    //  begin
+        data := FormatDateTime('dd-mm-yyyy',Date()); //Formando o nome do arquivo
+//        caminhoP := ' Nº Ped.: ' +numpedido + '-' + ' Cliente: ' + cliente + '.PDF'; //Formando o nome do arquivo
+        caminhoP := pasta + '-' + ' Nº Ped.: ' +numpedido + '-' + ' Cliente: ' + cliente + '.PDF';
+        aPDF := TQRPDFDocumentFilter.Create(caminhoP);
+
+        frmRelatorioPedido.QRPQuickrep1.ExportToFilter(aPDF);
+
+      //  frmRelatorioPedido.QRPQuickrep1.ExportToFilter(QRPDFFilter1.Create(caminhoP));
+         //TQRPDFDocumentFilter - Gerando o PDF
+        ShowMessage('PDF gerado em: ' + caminhoP);
+     // end;
+
+   // frmRelatorioPedido.QRPQuickrep1.Preview;
     frmRelatorioPedido.queryRelPedido.Close;
   finally
     frmRelatorioPedido.Free;
@@ -193,7 +190,7 @@ begin
   panelNav.Visible:= False;
   panelTela.Enabled:= True;
 //  DMRaito.FdTablePedidos.Edit;
-  DMRaito.FdTablePedidos.Insert;
+  DMRaito.FdTablePedidos.Append;
   DMRaito.FdTablePedidos['data_pedido']:= DateToStr(Now);
   DBEditCliente.SetFocus;
 end;
@@ -227,7 +224,7 @@ try
 end;
 procedure TfrmPedido.DBEditClienteExit(Sender: TObject);
 begin
-    if DMRaito.FdTablePedidos.State in [dsinsert, dsEdit] then
+    if DMRaito.FdTablePedidos.State in [dsInsert, dsEdit] then
       begin
       DMRaito.FDTablePedidos.Post;
       DMRaito.FDTablePedidos.Edit;
@@ -250,6 +247,12 @@ begin
 end;
 
 
+procedure TfrmPedido.dbgrdItensColExit(Sender: TObject);
+begin
+//if (dbgrdItens.Columns[14].Field.AsString <> '') then // and (dbgrdItens.Columns[6].Field.AsString = '') THEN
+//    dbgrdItens.SelectedIndex := 6;
+end;
+
 procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
 begin
  try
@@ -267,30 +270,18 @@ begin
        if MessageDlg('Deseja Excluir este Item selecionado ?',mtConfirmation,[mbYes,mbNo],0)=mrYes
        then begin
             DMRaito.FdTableItens.Delete;
-            DMRaito.FdTableItens.ApplyUpdates(0);
+        //    DMRaito.FdTableItens.ApplyUpdates(0);
        end;
   end;
 end;
 procedure TfrmPedido.FormCreate(Sender: TObject);
 begin
-DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
-end;
-procedure TfrmPedido.FormShow(Sender: TObject);
-begin
-//    DMRaito.FDTablePedidos.Active:= False;
-//    DMRaito.FDTablePedidos.Active:= True;
-//
-//    DMRaito.FdTableItens.Active:= False;
-//    DMRaito.FdTableItens.Active:= True;
-//
-//    DMRaito.FdTablePedidos.IndexName:= '';
-//    DMRaito.FdTablePedidos.First;
-//    DMRaito.FdTablePedidos.Last;
+//DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
 end;
 procedure TfrmPedido.LimparCache(Sender: TObject);
 begin
-  DMRaito.FdTablePedidos.CommitUpdates();
-  DMRaito.FdTableItens.CommitUpdates();
+//  DMRaito.FdTablePedidos.CommitUpdates();
+//  DMRaito.FdTableItens.CommitUpdates();
 end;
 procedure TfrmPedido.lokupclienteClick(Sender: TObject);
 begin
